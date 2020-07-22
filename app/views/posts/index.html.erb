@@ -1,0 +1,11 @@
+<div class="container">
+  <h1>All your posts</h1>
+
+  <% @posts.each do |post| %>
+    <h3><%= post.title %></h3>
+    <h5><%= post.date.to_formatted_s(:long) %></h5>
+    <p><%= post.content %></p>
+  <% end %>
+  <%= link_to "Add an Entry", new_post_path %>
+  <%= link_to 'Back', root_path %>
+</div>
