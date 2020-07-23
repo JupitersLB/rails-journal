@@ -1,6 +1,12 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: rgba(50, 50, 50, 0.7);
+  a {
+    color: rgba(255, 255, 255, 0.3)  !important;
+    &:hover {
+      color: rgba(255, 255, 255, 0.6) !important;
+    }
+  }
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,4 +15,13 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.dropdown-menu {
+  background: rgba(50, 50, 50, 0.7);
+  .dropdown-item{
+    &:hover {
+      background: rgba(50, 50, 50, 0.9);
+    }
+  }
 }
