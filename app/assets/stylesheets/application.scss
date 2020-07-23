@@ -11,3 +11,16 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+body {
+  height: 100vh;
+  background: linear-gradient(135deg,
+              rgba(0, 0, 0, 0.8) 0%,
+              rgba(0, 0, 0, 0.3) 50%),
+              asset-url('books.jpg');
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus{
+  outline: none;
+  box-shadow: none;
+}
