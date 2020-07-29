@@ -1,4 +1,7 @@
 <div class="container pt-5">
-  <h1 class="pt-5">Your Profile Page, <%= @user.first_name %></h1>
+  <h1 class="pt-5">Your Profile Page, <%= @user.username %></h1>
+  <% @posts.each do |post| %>
+    <h3><%= post.title %> <%= (post.user.username) %></h3>
+  <% end %>
 </div>
 

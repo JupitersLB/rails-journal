@@ -12,8 +12,7 @@ puts "Cleaned"
 
 puts "Creating users"
 params = {}
-params[:first_name] = "Liam"
-params[:second_name] = "Baker"
+params[:username] = "JupitersLB"
 params[:password] = "password"
 params[:email] = "liam.baker@journal.com"
 new_user = User.new(params)
@@ -21,8 +20,7 @@ new_user.save
 puts "Created user #{new_user.id}"
 
 params = {}
-params[:first_name] = "John"
-params[:second_name] = "Doe"
+params[:username] = "Liam"
 params[:password] = "password"
 params[:email] = "john.doe@journal.com"
 new_user = User.new(params)
@@ -36,7 +34,7 @@ puts "Creating posts"
   params = {}
   params[:title] = Faker::GreekPhilosophers.quote
   params[:content] = Faker::Hacker.say_something_smart
-  params[:date] = Date.today.to_formatted_s(:long)
+  params[:date] = Date.today
   params[:user] = User.all.sample
   new_post = Post.new(params)
   new_post.save
