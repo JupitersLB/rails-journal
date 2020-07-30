@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :posts
   has_many :comments
+  has_one_attached :photo
 
   # friend requests
   has_many :friend_requests_as_requestor,

@@ -1,20 +1,29 @@
-<div class="accordion" id="accordionPosts">
+<div class="accordion mb-5" id="accordionPosts">
   <% posts.each do |post| %>
     <div class="card">
-      <div class="card-header d-flex justify-content-between" id="heading<%= post.id %>">
-        <h2 class="mb-0">
+      <div class="card-header " id="heading<%= post.id %>">
+        <div class="row justify-content-between">
           <button class="btn" type="button" data-toggle="collapse" data-target="#collapse<%= post.id %>" aria-expanded="true" aria-controls="collapse<%= post.id %>">
             <h3><%= post.title %></h3>
           </button>
-        </h2>
-        <p><small> (<%= post.date.to_formatted_s(:short) %>)</small></p>
+          <p><small> (<%= post.date.to_formatted_s(:short) %>)</small></p>
+        </div>
+        <div class="row my-0">
+          <p class="pl-3 my-0"><small><%= post.user.username %></small></p>
+        </div>
       </div>
 
       <div id="collapse<%= post.id %>" class="collapse" aria-labelledby="heading<%= post.id %>" data-parent="#accordionPosts">
         <div class="card-body">
           <p><%= post.content %></p>
-          <p><small><%= post.comments.count %></small></p>
-          <%= link_to 'View in Window', post_path(post) %>
+          <p><small>comments: <%= post.comments.count %></small></p>
+          <%= link_to 'Delete',
+                      post_path(post),
+                      remote: true,
+                      method: :delete,
+                      data: { confirm: "Are you sure?" },
+                      class: 'btn btn-seconday' %>
+          <%= link_to 'View in Window', post_path(post), class: 'btn btn-seconday' %>
         </div>
       </div>
     </div>

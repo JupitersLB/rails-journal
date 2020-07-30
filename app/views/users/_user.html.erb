@@ -1,8 +1,11 @@
- <%= image_tag "me.jpg", class: "avatar-large" %>
-<h1>Joined on <%= user.created_at %></h1>
+<% if user.photo.attached? %>
+  <%= cl_image_tag user.photo.key, class: "avatar-large dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+<% else %>
+  <%= image_tag "avatar.png", class: "avatar-large dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+<% end %>
+<h1>Joined on <%= user.created_at.to_formatted_s(:long) %></h1>
 <h1> <%= user.username %> </h1>
 <%= link_to 'Edit Profile', edit_user_registration_path, class: 'btn btn-secondary' %>
-<h1>Edit Profile (link) </h1>
 <h1>Friends</h1>
 <% user.friends.each do |friend| %>
   <%= link_to friend.username, user_path(friend.username), class: 'btn btn-secondary' %>
