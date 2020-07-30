@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.where(user: current_user)
+    @my_posts = Post.where(user: current_user)
+    ids = current_user.friends.pluck(:id) << current_user.id
+    @all_posts = Post.where(user_id: ids)
   end
 
   def new
