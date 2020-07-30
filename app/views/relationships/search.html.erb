@@ -1,0 +1,9 @@
+<div class="container pt-5">
+  <h1>Here are the results from your search...</h1>
+  <% if @search_results.present? %>
+    <% @search_results.each do |user| %>
+      <h1><%= user.username %></h1>
+      <%= link_to 'Add as Friend?', relationships_path(user), method: 'post', class: 'btn btn-secondary' %>
+    <% end %>
+  <% end %>
+</div>

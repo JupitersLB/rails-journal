@@ -27,6 +27,13 @@ class User < ApplicationRecord
   has_many :friend_as, through: :friendships_as_friend_b
   has_many :friend_bs, through: :friendships_as_friend_a
 
+  include PgSearch::Model
+  pg_search_scope :search_by_username,
+    against: :username,
+    using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
+
   def friends
     friend_as + friend_bs
   end

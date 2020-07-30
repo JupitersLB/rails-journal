@@ -1,0 +1,27 @@
+<div class="container pt-5">
+  <%= form_tag(search_path, method: "get") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Enter search term" %>
+    <%= submit_tag "Search" %>
+  <% end %>
+  <h1 class="pt-5">Here are your friends</h1>
+  <% @friends.each do |friend| %>
+    <%= link_to user_path(friend.username), class: 'btn btn-secondary' do %>
+      <h1><%= friend.username %></h1>
+    <% end %>
+  <% end %>
+  <% if @pending_requestor.present? %>
+    <h1 class="pt-5">Pending Friend Requests</h1>
+    <% @pending_requestor.each do |pending| %>
+      <h1><%= pending.receiver.username %></h1>
+      <%= link_to 'cancel', cancel_relationship_path(pending.id), method: :patch, class: 'btn btn-secondary' %>
+    <% end %>
+  <% end %>
+  <% if @pending_receiver.present? %>
+    <h1 class="pt-5">Pending Friend Requests</h1>
+    <% @pending_receiver.each do |pending| %>
+      <h1><%= pending.requestor.username %></h1>
+      <%= link_to 'Accept', accept_relationship_path(pending.id), method: :patch, class: 'btn btn-secondary' %>
+      <%= link_to 'Decline', decline_relationship_path(pending.id), method: :patch, class: 'btn btn-secondary' %>
+    <% end %>
+  <% end %>
+</div>
