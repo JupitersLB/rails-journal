@@ -22,10 +22,16 @@ body {
   .message {
     position: fixed;
     bottom: 60px;
-    right: 40px;
-    font-size: 40px;
+    right: 30px;
+    font-size: 30px;
     color: $light-gray;
     cursor: pointer;
+    padding: 10px;
+    border-radius: 100%;
+    background-color: rgba(50, 50, 50, 0.7);
+    &:hover {
+      background-color: rgba(80, 80, 80, 0.7)
+    }
   }
   h1 {
     color: $light-gray;

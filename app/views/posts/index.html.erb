@@ -1,29 +1,32 @@
 <div class="container pt-5">
-  <% if current_user.friends.count.zero? %>
-    <h1 class="pt-5 pl-5">All your posts</h1>
-    <%= render "posts/posts", posts: @my_posts %>
+  <div class="my-container">
 
-  <% else %>
+    <% if current_user.friends.count.zero? %>
+      <h1 class="pt-5 pl-5">All your posts</h1>
+      <%= render "posts/posts", posts: @my_posts %>
 
-    <ul class="nav nav-tabs pt-5" id="myTab" role="tablist">
-      <li class="nav-item">
-        <a class="nav-link active" id="my-posts" data-toggle="tab" href="#posts" role="tab" aria-controls="home" aria-selected="true">My Posts</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="all-posts" data-toggle="tab" href="#friends" role="tab" aria-controls="profile" aria-selected="false">Friends Posts</a>
-      </li>
-    </ul>
+    <% else %>
 
-    <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
-        <h1 class="pt-3 pl-5">All your posts</h1>
-        <%= render "posts/posts", posts: @my_posts %>
+      <ul class="nav nav-tabs pt-5" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="my-posts" data-toggle="tab" href="#posts" role="tab" aria-controls="home" aria-selected="true">My Posts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="all-posts" data-toggle="tab" href="#friends" role="tab" aria-controls="profile" aria-selected="false">Friends Posts</a>
+        </li>
+      </ul>
+
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
+          <h1 class="pt-3 pl-5">All your posts</h1>
+          <%= render "posts/posts", posts: @my_posts %>
+        </div>
+        <div class="tab-pane fade" id="friends" role="tabpanel" aria-labelledby="friends-tab">
+          <h1 class="pt-3 pl-5">Friends & You</h1>
+          <%= render "posts/posts", posts: @all_posts %>
+        </div>
       </div>
-      <div class="tab-pane fade" id="friends" role="tabpanel" aria-labelledby="friends-tab">
-        <h1 class="pt-3 pl-5">Friends & You</h1>
-        <%= render "posts/posts", posts: @all_posts %>
-      </div>
-    </div>
 
-  <% end %>
+    <% end %>
+  </div>
 </div>

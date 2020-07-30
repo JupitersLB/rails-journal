@@ -15,7 +15,9 @@
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <%= yield %>
-    <i class="message fa fa-users" aria-hidden="true"></i>
+    <%= link_to root_path do %>
+      <i class="message fa fa-users" aria-hidden="true"></i>
+    <% end %>
     <%= render 'shared/footer' %>
   </body>
 </html>
