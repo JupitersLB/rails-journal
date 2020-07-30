@@ -1,10 +1,11 @@
  <%= image_tag "me.jpg", class: "avatar-large" %>
 <h1>Joined on <%= user.created_at %></h1>
 <h1> <%= user.username %> </h1>
+<%= link_to 'Edit Profile', edit_user_registration_path, class: 'btn btn-secondary' %>
 <h1>Edit Profile (link) </h1>
 <h1>Friends</h1>
 <% user.friends.each do |friend| %>
-  <%= link_to friend.username, user_path(friend.username) %>
+  <%= link_to friend.username, user_path(friend.username), class: 'btn btn-secondary' %>
 <% end %>
 <h1>Number of Posts: <%= user.posts.count %></h1>
-<h1>Number of Comments</h1>
+<h1>Number of Comments: <%= user.comments.count %></h1>
