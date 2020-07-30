@@ -27,6 +27,9 @@ body {
     color: $light-gray;
     cursor: pointer;
   }
+  h1 {
+    color: $light-gray;
+  }
 }
 
 .btn:focus, .btn:active:focus, .btn.active:focus{

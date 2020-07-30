@@ -1,7 +1,5 @@
 <div class="container pt-5">
-  <h1 class="pt-5">Your Profile Page, <%= @user.username %></h1>
-  <% @posts.each do |post| %>
-    <h3><%= post.title %> <%= (post.user.username) %></h3>
-  <% end %>
+  <h1 class="pt-5">Profile Page</h1>
+  <%= render "users/user", user: User.find_by_username(params[:username]) %>
 </div>
 
