@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :posts
+  has_many :comments
 
   # friend requests
   has_many :friend_requests_as_requestor,
