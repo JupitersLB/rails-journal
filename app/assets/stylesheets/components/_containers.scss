@@ -1,0 +1,45 @@
+.my-container {
+  margin: 50px 0px;
+  padding: 5px 30px;
+  border-radius: 25px;
+}
+
+.devise-container {
+  margin: 50px 100px;
+  background-color: $trans-gray;
+  padding: 5px 30px;
+  border-radius: 25px;
+  color: $teal;
+  a {
+    color: $teal;
+  }
+  input {
+    color: $teal;
+  }
+}
+
+body {
+  position: relative;
+  height: 100vh;
+  background: linear-gradient(135deg,
+              rgba(0, 0, 0, 0.8) 0%,
+              rgba(0, 0, 0, 0.3) 50%),
+              asset-url('books.jpg');
+  .message {
+    position: fixed;
+    bottom: 60px;
+    right: 30px;
+    font-size: 30px;
+    color: $light-gray;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 100%;
+    background-color: rgba(50, 50, 50, 0.7);
+    &:hover {
+      background-color: rgba(80, 80, 80, 0.7)
+    }
+  }
+  h1 {
+    color: $light-gray;
+  }
+}
