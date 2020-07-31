@@ -4,6 +4,20 @@
   border-radius: 25px;
 }
 
+.main-container {
+  margin: 50px 20px;
+  background-color: $trans-gray;
+  padding: 30px 30px;
+  border-radius: 25px;
+  color: $teal;
+  a {
+    color: $teal;
+  }
+  input {
+    color: $teal;
+  }
+}
+
 .devise-container {
   margin: 50px 100px;
   background-color: $trans-gray;

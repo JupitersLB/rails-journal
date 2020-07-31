@@ -1,5 +1,6 @@
 <div class="container pt-5">
-  <h1 class="pt-5">Profile Page</h1>
-  <%= render "users/user", user: User.find_by_username(params[:username]) %>
+  <div class="main-container">
+    <%= render "users/user", user: User.find_by_username(params[:username]) %>
+  </div>
 </div>
 

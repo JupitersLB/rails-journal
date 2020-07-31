@@ -1,0 +1,27 @@
+.friend-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+  .friend-card {
+    width: 280px;
+    border-radius: 8px;
+    padding: 8px;
+    background-color: rgba(70, 70, 70, 0.9);
+    .friend-card-image {
+      display: flex;
+      justify-content: center;
+      .friend-image {
+      width: 240px;
+      border-radius: 50%;
+      }
+    }
+    .friend-card-body {
+      text-align: center;
+      a {
+        text-decoration: none;
+        font-size: 24px;
+      }
+    }
+  }
+}
+

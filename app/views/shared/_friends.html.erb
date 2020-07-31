@@ -1,0 +1,41 @@
+<div class="friend-cards">
+  <% friends.each do |friend| %>
+    <div class="friend-card shadow">
+      <div class="friend-card-image">
+        <% if friend.photo.attached? %>
+          <%= cl_image_tag friend.photo.key, class: 'friend-image' %>
+        <% else %>
+          <%= image_tag "avatar.png", class: 'friend-image' %>
+        <% end %>
+      </div>
+      <div class="friend-card-body">
+        <%= link_to friend.username, user_path(friend.username) %>
+      </div>
+      <div class="friend-card-footer justify-content-between row">
+        <div class="col text-center">
+          <p><small><%= friend.posts.count %></small> <i class="fa fa-book" aria-hidden="true"></i></p>
+        </div>
+        <div class="col text-center">
+          <p><small><%= friend.comments.count %></small> <i class="fa fa-comment" aria-hidden="true"></i></p>
+        </div>
+        <div class="col text-center">
+          <p><small><%= friend.friends.count %></small> <i class="fa fa-users" aria-hidden="true"></i></p>
+        </div>
+      </div>
+      <% if friend_search %>
+        <div class="row justify-content-center">
+            <%= link_to 'Add as Friend?', relationships_path(friend), method: 'post', class: 'btn btn-secondary' %>
+        </div>
+      <% elsif pending_request %>
+        <div class="row justify-content-center">
+          <%= link_to 'Cancel', cancel_relationship_path(friend.friend_requests_as_receiver.id), method: :patch, class: 'btn btn-secondary' %>
+        </div>
+        <% elsif received %>
+        <div class="row justify-content-center">
+          <%= link_to 'Accept', accept_relationship_path(friend.friend_requests_as_requestor.first.id), method: :patch, class: 'btn btn-secondary mr-3' %>
+          <%= link_to 'Decline', decline_relationship_path(friend.friend_requests_as_requestor.first.id), method: :patch, class: 'btn btn-secondary' %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
