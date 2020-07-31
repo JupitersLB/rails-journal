@@ -1,15 +1,21 @@
-<div class="accordion mb-5" id="accordionPosts">
+<div class="accordion mb-3" id="accordionPosts">
   <% posts.each do |post| %>
     <div class="card">
       <div class="card-header " id="heading<%= post.id %>">
-        <div class="row justify-content-between">
-          <button class="btn" type="button" data-toggle="collapse" data-target="#collapse<%= post.id %>" aria-expanded="true" aria-controls="collapse<%= post.id %>">
+        <div class="row">
+          <button class="btn text-left col-10" type="button" data-toggle="collapse" data-target="#collapse<%= post.id %>" aria-expanded="true" aria-controls="collapse<%= post.id %>">
             <h3><%= post.title %></h3>
           </button>
-          <p><small> (<%= post.date.to_formatted_s(:short) %>)</small></p>
-        </div>
-        <div class="row my-0">
-          <p class="pl-3 my-0"><small><%= post.user.username %></small></p>
+          <div class="col-2">
+            <div class="row text-right">
+              <%= link_to user_path(post.user.username), class: "col" do %>
+                <p><small><%= post.user.username %></small></p>
+              <% end %>
+            </div>
+            <div class="row text-right">
+              <p class="col"><small> (<%= post.date.to_formatted_s(:short) %>)</small></p>
+            </div>
+          </div>
         </div>
       </div>
 

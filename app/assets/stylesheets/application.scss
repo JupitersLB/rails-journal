@@ -38,6 +38,13 @@ body {
   }
 }
 
+.my-container {
+  margin: 50px 0px;
+  // background-color: $trans-gray;
+  padding: 5px 30px;
+  border-radius: 25px;
+}
+
 .btn:focus, .btn:active:focus, .btn.active:focus{
   outline: none;
   box-shadow: none;

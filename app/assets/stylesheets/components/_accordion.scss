@@ -1,0 +1,48 @@
+.accordion {
+   .card:first-of-type {
+    border-top-right-radius: 8px;
+  }
+  .card:last-of-type {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+}
+
+.card {
+  border: none;
+  color: $teal;
+  background-color: $trans-gray;
+  a {
+    color: $teal;
+  }
+  h3 {
+    color: $teal;
+  }
+  p {
+    margin-bottom: 4px;
+  }
+  .card-body {
+    background-color: rgba(30, 30, 30, 0.8);
+  }
+}
+
+#myTab {
+  border: none;
+  .active {
+    background-color: $teal;
+    border: none;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+  }
+}
+
+.nav-tabs .nav-link {
+  border: none;
+  background-color: $trans-gray;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  color: rgba(255, 255, 255, 0.3);
+  &:hover {
+    color: rgba(255, 255, 255, 0.6) !important;
+  }
+}

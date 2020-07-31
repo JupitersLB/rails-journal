@@ -1,10 +1,33 @@
 <div class="container pt-5">
-  <h1 class="pt-5"><%= @post.title %></h1>
-  <p><small><%= @post.date.to_formatted_s(:long) %></small></p>
-  <p><%= @post.content %></p>
-  <% @post.comments.each do |comment| %>
-    <p><%= comment.content %></p>
-    <p><%= comment.user.username %></p>
-    <p><%= comment.created_at %></p>
-  <% end %>
+  <div class="my-container">
+    <div class="post-card">
+      <div class="post-card-header d-flex align-items-start">
+        <h1 class ="col-10"><%= @post.title %></h1>
+        <div class="col-2">
+          <div class="row text-right">
+            <%= link_to user_path(@post.user.username), class: 'col' do %>
+              <p><small>By <%= @post.user.username %></small></p>
+            <% end %>
+          </div>
+          <div class="row text-right">
+            <p class="col"><small><%= @post.date.to_formatted_s(:long) %></small></p>
+          </div>
+        </div>
+      </div>
+      <div class="post-card-content pl-3">
+        <p><%= @post.content %></p>
+      </div>
+      <div class="post-card-comments pl-3">
+        <% @post.comments.each do |comment| %>
+          <div class="row">
+            <%= link_to user_path(comment.user.username), class: 'col-1' do %>
+              <p><small><%= comment.user.username %></small></p>
+            <% end %>
+            <p class="col-2"><small><%= comment.created_at.to_formatted_s(:long) %></small></p>
+          </div>
+          <p><%= comment.content %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

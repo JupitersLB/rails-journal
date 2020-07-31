@@ -10,6 +10,9 @@
   li {
     color: rgba(255, 255, 255, 0.3)  !important;
   }
+  li.name-color {
+    color: $teal !important;
+  }
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -28,3 +31,4 @@
     }
   }
 }
+

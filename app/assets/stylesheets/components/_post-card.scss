@@ -1,0 +1,23 @@
+.post-card {
+  background-color: $trans-gray;
+  border-radius: 8px;
+  padding: 8px;
+  color: $teal;
+  a {
+    color: $teal;
+  }
+  .post-card-header {
+    p {
+      margin-bottom: 4px;
+    }
+    h1 {
+      font-size: 56px;
+    }
+  }
+  .post-card-content p {
+    font-size: 24px;
+  }
+  .post-card-comments p {
+    margin-bottom: 4px;
+  }
+}
