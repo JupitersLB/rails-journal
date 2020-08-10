@@ -2,6 +2,7 @@ class RelationshipsController < ApplicationController
   before_action :find_friend_request, only: [:accept, :decline, :cancel]
 
   def index
+    skip_policy_scope
     @friends = current_user.friends
     @pending_requests = current_user.friend_requests_as_requestor.flat_map(&:receiver)
     @pending_requests_received = current_user.friend_requests_as_receiver.flat_map(&:requestor)
@@ -17,8 +18,10 @@ class RelationshipsController < ApplicationController
   end
 
   def search
+    skip_policy_scope
     @search_results = User.search_by_username(params[:search])
     @friend_request = FriendRequest.new
+    authorize @friend_request
   end
 
   def accept

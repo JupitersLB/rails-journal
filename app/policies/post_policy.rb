@@ -14,7 +14,7 @@ class PostPolicy < ApplicationPolicy
   end
 
   def show?
-    record.user.friends.map { |friend| friend == user }.include?(true)
+    record.user.friends.map { |friend| friend == user }.include?(true) || record.user == user
   end
 
   def destroy?

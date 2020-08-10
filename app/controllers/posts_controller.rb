@@ -14,6 +14,7 @@ class PostsController < ApplicationController
 
   def show
     @comment = Comment.new
+    authorize @comment
     authorize @post
   end
 
