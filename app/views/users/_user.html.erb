@@ -18,6 +18,4 @@
   </div>
 </div>
 <h1>Friends</h1>
-<% user.friends.each do |friend| %>
-  <%= link_to friend.username, user_path(friend.username), class: 'btn btn-secondary' %>
-<% end %>
+<%= render 'shared/friends', friends: user.friends, friend_search: false, pending_request: false, received: false %>

@@ -14,19 +14,33 @@
           </div>
         </div>
       </div>
-      <div class="post-card-content pl-3">
+      <div class="post-card-content pb-3 pl-3">
         <p><%= @post.content %></p>
       </div>
       <div class="post-card-comments pl-3">
         <% @post.comments.each do |comment| %>
-          <div class="row">
+          <div class="row" id="<%= comment.id %>">
             <%= link_to user_path(comment.user.username), class: 'col-1' do %>
               <p><small><%= comment.user.username %></small></p>
             <% end %>
             <p class="col-2"><small><%= comment.created_at.to_formatted_s(:long) %></small></p>
+            <%= link_to post_comment_path(@post, comment),
+                        method: :delete,
+                        data: { confirm: "Are you sure?" } do %>
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+            <% end %>
           </div>
-          <p><%= comment.content %></p>
+          <p><%= comment.note %></p>
+          <hr>
         <% end %>
+      </div>
+      <a class="btn btn-primary ml-3 my-3" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Add a comment
+      </a>
+      <div class="collapse px-3 py-3" id="collapseExample">
+        <div class="card card-body">
+          <%= render 'comment_form' %>
+        </div>
       </div>
     </div>
   </div>

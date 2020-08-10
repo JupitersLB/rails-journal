@@ -20,37 +20,30 @@
       </div>
 
       <div id="collapse<%= post.id %>" class="collapse" aria-labelledby="heading<%= post.id %>" data-parent="#accordionPosts">
-        <div class="card-body d-flex">
-          <div class="col-10">
-            <p><%= post.content %></p>
-          </div>
-          <div class="col-2">
-            <div class="row justify-content-end">
-              <div class="col text-right">
-                <%= link_to post_path(post) do %>
-                  <i class="fa fa-search" aria-hidden="true"></i>
-                <% end %>
-              </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-11">
+              <p><%= post.content %></p>
             </div>
-            <div class="row justify-content-end">
-              <div class="col text-right">
-                <%= link_to post_path(post),
-                            remote: true,
-                            method: :delete,
-                            data: { confirm: "Are you sure?" } do %>
-                            <i class="fa fa-trash" aria-hidden="true"></i>
-                <% end %>
+            <div class="col-1 text-right">
+              <%= link_to post_path(post),
+                          remote: true,
+                          method: :delete,
+                          data: { confirm: "Are you sure?" } do %>
+                          <i class="fa fa-trash" aria-hidden="true"></i>
+              <% end %>
+            </div>
+          </div>
 
-              </div>
+          <div class="row mt-3">
+            <div class="pl-3">
+              <%= link_to post_path(post) do %>
+                <p><i class="fa fa-comment" aria-hidden="true"></i> <small><%= post.comments.count %> comments</small> </p>
+              <% end %>
             </div>
-            <div class="row justify-content-end">
-              <div class="col text-right">
-                <%= link_to post_path(post) do %>
-                  <p><small><%= post.comments.count %></small> <i class="fa fa-comment" aria-hidden="true"></i></p>
-                <% end %>
-              </div>
-            </div>
+
           </div>
+
         </div>
       </div>
     </div>

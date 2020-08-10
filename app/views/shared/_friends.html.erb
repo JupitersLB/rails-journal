@@ -28,7 +28,7 @@
         </div>
       <% elsif pending_request %>
         <div class="row justify-content-center">
-          <%= link_to 'Cancel', cancel_relationship_path(friend.friend_requests_as_receiver.id), method: :patch, class: 'btn btn-secondary' %>
+          <%= link_to 'Cancel', cancel_relationship_path(friend.friend_requests_as_receiver.first.id), method: :patch, class: 'btn btn-secondary' %>
         </div>
         <% elsif received %>
         <div class="row justify-content-center">

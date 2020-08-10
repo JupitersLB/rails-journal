@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :posts
+  resources :posts do
+    resources :comments, only: [ :create, :destroy ]
+  end
   resources :relationships, only: [ :index, :create ]
   get '/search', to: 'relationships#search', as: 'search'
   patch '/cancel/:id', to: 'relationships#cancel', as: 'cancel_relationship'
