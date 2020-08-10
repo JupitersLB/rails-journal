@@ -14,7 +14,7 @@
           </div>
         </div>
       </div>
-      <div class="post-card-content pb-3 pl-3">
+      <div class="post-card-content py-3 pl-3">
         <p><%= @post.content %></p>
       </div>
       <div class="post-card-comments pl-3">
@@ -23,11 +23,13 @@
             <%= link_to user_path(comment.user.username), class: 'col-1' do %>
               <p><small><%= comment.user.username %></small></p>
             <% end %>
-            <p class="col-2"><small><%= comment.created_at.to_formatted_s(:long) %></small></p>
-            <%= link_to post_comment_path(@post, comment),
-                        method: :delete,
-                        data: { confirm: "Are you sure?" } do %>
-                        <i class="fa fa-trash" aria-hidden="true"></i>
+            <% if policy(comment).destroy? %>
+              <p class="col-2"><small><%= comment.created_at.to_formatted_s(:long) %></small></p>
+              <%= link_to post_comment_path(@post, comment),
+                          method: :delete,
+                          data: { confirm: "Are you sure?" } do %>
+                          <i class="fa fa-trash" aria-hidden="true"></i>
+              <% end %>
             <% end %>
           </div>
           <p><%= comment.note %></p>

@@ -2,6 +2,7 @@ class RelationshipsController < ApplicationController
   before_action :find_friend_request, only: [:accept, :decline, :cancel]
 
   def index
+    skip_policy_scope
     @friends = current_user.friends
     @pending_requests = current_user.friend_requests_as_requestor.flat_map(&:receiver)
     @pending_requests_received = current_user.friend_requests_as_receiver.flat_map(&:requestor)
@@ -9,6 +10,7 @@ class RelationshipsController < ApplicationController
 
   def create
     friend = FriendRequest.new(requestor: current_user, receiver: User.find(params[:format]))
+    authorize friend
     if friend.save
       redirect_to relationships_path
     else
@@ -19,22 +21,26 @@ class RelationshipsController < ApplicationController
   def search
     @search_results = User.search_by_username(params[:search])
     @friend_request = FriendRequest.new
+    authorize @friend_request
   end
 
   def accept
     friendship = Friendship.new(friend_a: @friend_request.requestor, friend_b: current_user)
     friendship.save
     @friend_request.destroy
+    authorize @friend_request
     redirect_to relationships_path
   end
 
   def cancel
     @friend_request.destroy
+    authorize @friend_request
     redirect_to relationships_path
   end
 
   def decline
     @friend_request.destroy
+    authorize @friend_request
     redirect_to relationships_path
   end
 

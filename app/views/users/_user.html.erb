@@ -11,11 +11,13 @@
     <h4 class="pl-4">Number of Posts: <%= user.posts.count %></h4>
     <h4 class="pl-4">Number of Comments: <%= user.comments.count %></h4>
   </div>
-  <div class="col-1 text-right">
-    <%= link_to edit_user_registration_path do %>
-      <h3><i class="fa fa-eraser" aria-hidden="true"></i></h3>
-    <% end %>
-  </div>
+  <% if policy(user).update? %>
+    <div class="col-1 text-right">
+      <%= link_to edit_user_registration_path do %>
+        <h3><i class="fa fa-eraser" aria-hidden="true"></i></h3>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 <h1>Friends</h1>
 <%= render 'shared/friends', friends: user.friends, friend_search: false, pending_request: false, received: false %>

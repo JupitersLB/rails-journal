@@ -2,7 +2,7 @@
   <div class="main-container">
     <h1>Here are the results from your search...</h1>
     <% if @search_results.present? %>
-      <%= render 'shared/friends', friends: @search_results, friend_search: true %>
+      <%= render 'shared/friends', friends: @search_results, friend_search: true, pending_request: false, received: false %>
     <% end %>
   </div>
 </div>
