@@ -15,9 +15,16 @@
     }
   }
   .post-card-content p {
-    font-size: 24px;
+    font-size: 28px;
   }
   .post-card-comments p {
     margin-bottom: 4px;
+    .post-card-comments-content p {
+      font-size: 14px;
+      weight: italic;
+    }
+    .post-card-comments-content p {
+      font-size: 16px;
+    }
   }
 }

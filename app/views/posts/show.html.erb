@@ -19,12 +19,16 @@
       </div>
       <div class="post-card-comments pl-3">
         <% @post.comments.each do |comment| %>
-          <div class="row" id="<%= comment.id %>">
-            <%= link_to user_path(comment.user.username), class: 'col-1' do %>
-              <p><small><%= comment.user.username %></small></p>
+          <div class="row">
+            <% if policy(comment).friends? %>
+              <%= link_to user_path(comment.user.username), class: 'col-1' do %>
+                <p><i><small> <%= comment.user.username %></small></i></p>
+              <% end %>
+            <% else %>
+                <p class="col-1"><i><small>annonymous</small></i></p>
             <% end %>
+            <p class="col-2"><i><small><%= comment.created_at.to_formatted_s(:long) %></small></i></p>
             <% if policy(comment).destroy? %>
-              <p class="col-2"><small><%= comment.created_at.to_formatted_s(:long) %></small></p>
               <%= link_to post_comment_path(@post, comment),
                           method: :delete,
                           data: { confirm: "Are you sure?" } do %>

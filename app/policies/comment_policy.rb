@@ -16,4 +16,8 @@ class CommentPolicy < ApplicationPolicy
   def destroy?
     record.user == user
   end
+
+  def friends?
+    record.user.friends.map { |friend| friend == user }.include?(true) || record.user == user
+  end
 end
