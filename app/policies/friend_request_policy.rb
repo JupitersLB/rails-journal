@@ -5,7 +5,23 @@ class FriendRequestPolicy < ApplicationPolicy
     end
   end
 
+  def create?
+    true
+  end
+
   def search?
+    true
+  end
+
+  def cancel?
+    true
+  end
+
+  def accept?
+    true
+  end
+
+  def decline?
     true
   end
 end
