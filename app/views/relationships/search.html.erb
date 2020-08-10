@@ -1,6 +1,16 @@
 <div class="container pt-5">
   <div class="main-container">
-    <h1>Here are the results from your search...</h1>
+    <div class="row pb-3 align-items-center">
+      <div class="col-8">
+        <h1>Do you know them?</h1>
+      </div>
+      <div class="col-4 align-middle text-right">
+        <%= form_tag(search_path, method: "get") do %>
+          <%= text_field_tag :search, params[:search], placeholder: "Find friends" %>
+          <%= submit_tag "Search" %>
+        <% end %>
+      </div>
+    </div>
     <% if @search_results.present? %>
       <%= render 'shared/friends', friends: @search_results, friend_search: true, pending_request: false, received: false %>
     <% end %>

@@ -4,8 +4,8 @@ class RelationshipsController < ApplicationController
   def index
     skip_policy_scope
     @friends = current_user.friends
-    @pending_requests = current_user.friend_requests_as_requestor.flat_map(&:receiver)
-    @pending_requests_received = current_user.friend_requests_as_receiver.flat_map(&:requestor)
+    @pending_requests = current_user.friend_requests_as_requestor.where(status: "pending").flat_map(&:receiver)
+    @pending_requests_received = current_user.friend_requests_as_receiver.where(status: "pending").flat_map(&:requestor)
   end
 
   def create
@@ -27,7 +27,8 @@ class RelationshipsController < ApplicationController
   def accept
     friendship = Friendship.new(friend_a: @friend_request.requestor, friend_b: current_user)
     friendship.save
-    @friend_request.destroy
+    @friend_request.status = "accepted"
+    @friend_request.save
     authorize @friend_request
     redirect_to relationships_path
   end
