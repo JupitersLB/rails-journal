@@ -36,19 +36,47 @@
       position: absolute;
       text-align: center;
       opacity: 0;
+      top: 40%;
+      left: 20%;
       transition: opacity .35s ease;
+      z-index: -10;
       a {
-        width: 200px;
-        padding: 12px 48px;
+        width: 160px;
+        padding: 8px 32px;
         text-align: center;
         color: white;
         border: solid 2px white;
         z-index: 1;
+        text-decoration: none;
+      }
+    }
+    .friend-buttons {
+      position: absolute;
+      text-align: center;
+      width: inherit;
+      opacity: 0;
+      top: 35%;
+      left: 5%;
+      transition: opacity .35s ease;
+      z-index: -10;
+      a {
+        width: 120px;
+        padding: 8px 32px;
+        text-align: center;
+        color: white;
+        border: solid 2px white;
+        z-index: 1;
+        text-decoration: none;
       }
     }
     &:hover {
       .friend-button {
         opacity: 1;
+        z-index: 100;
+      }
+      .friend-buttons {
+        opacity: 1;
+        z-index: 100;
       }
       .overlay {
         display: block;

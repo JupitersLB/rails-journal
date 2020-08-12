@@ -30,16 +30,21 @@
           <%= link_to 'Add as Friend?', relationships_path(friend), method: 'post' %>
         </div>
       <% elsif pending_request %>
-        <div class="row justify-content-center">
-          <%= link_to 'Cancel', cancel_relationship_path(friend.friend_requests_as_receiver.first.id), method: :patch, class: 'btn btn-secondary' %>
+        <div class="row friend-button justify-content-center">
+          <%= link_to 'Cancel', cancel_relationship_path(friend.friend_requests_as_receiver.first.id), method: :patch %>
         </div>
         <% elsif received %>
-        <div class="row justify-content-center">
-          <%= link_to 'Accept', accept_relationship_path(friend.friend_requests_as_requestor.first.id), method: :patch, class: 'btn btn-secondary mr-3' %>
-          <%= link_to 'Decline', decline_relationship_path(friend.friend_requests_as_requestor.first.id), method: :patch, class: 'btn btn-secondary' %>
+        <div class="row friend-buttons justify-content-center">
+          <%= link_to 'Accept', accept_relationship_path(friend.friend_requests_as_requestor.first.id), method: :patch, class: 'col-5' %>
+          <%= link_to 'Decline', decline_relationship_path(friend.friend_requests_as_requestor.first.id), method: :patch, class: 'col-5 ml-2' %>
         </div>
       <% end %>
-      <div class="overlay"></div>
+      <% if friend_search == true ||
+             pending_request == true ||
+             received == true
+             %>
+        <div class="overlay"></div>
+      <% end %>
     </div>
   <% end %>
 </div>
