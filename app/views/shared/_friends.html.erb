@@ -26,8 +26,8 @@
             friend.friend_requests_as_receiver.where(requestor: current_user).first.nil? &&
             friend.friend_requests_as_requestor.where(receiver: current_user).first.nil? &&
             friend != current_user %>
-        <div class="row justify-content-center">
-          <%= link_to 'Add as Friend?', relationships_path(friend), method: 'post', class: 'btn btn-secondary' %>
+        <div class="row friend-button justify-content-center">
+          <%= link_to 'Add as Friend?', relationships_path(friend), method: 'post' %>
         </div>
       <% elsif pending_request %>
         <div class="row justify-content-center">

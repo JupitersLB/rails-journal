@@ -32,9 +32,28 @@
         font-size: 24px;
       }
     }
-    &:hover .overlay {
-      display: block;
-      background: rgba(0, 0, 0, .3);
+    .friend-button {
+      position: absolute;
+      text-align: center;
+      opacity: 0;
+      transition: opacity .35s ease;
+      a {
+        width: 200px;
+        padding: 12px 48px;
+        text-align: center;
+        color: white;
+        border: solid 2px white;
+        z-index: 1;
+      }
+    }
+    &:hover {
+      .friend-button {
+        opacity: 1;
+      }
+      .overlay {
+        display: block;
+        background: rgba(0, 0, 0, .3);
+      }
     }
   }
 }
