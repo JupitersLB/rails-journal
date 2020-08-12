@@ -1,6 +1,11 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!
-  before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :authenticate_user!, :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_last_seen_at, if: proc {
+                                         user_signed_in? &&
+                                           (current_user.last_seen_at.nil? ||
+                                        current_user.last_seen_at < 15.minutes.ago)
+                                       }
+
   include Pundit
 
   # Pundit: white-list approach.
@@ -14,6 +19,10 @@ class ApplicationController < ActionController::Base
   def user_not_authorized
     flash[:alert] = "You are not authorized to perform this action."
     redirect_to(root_path)
+  end
+
+  def set_last_seen_at
+    current_user.update_column(:last_seen_at, Time.now)
   end
 
   def configure_permitted_parameters

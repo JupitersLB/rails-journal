@@ -27,7 +27,7 @@
             friend.friend_requests_as_requestor.where(receiver: current_user).first.nil? &&
             friend != current_user %>
         <div class="row justify-content-center">
-            <%= link_to 'Add as Friend?', relationships_path(friend), method: 'post', class: 'btn btn-secondary' %>
+          <%= link_to 'Add as Friend?', relationships_path(friend), method: 'post', class: 'btn btn-secondary' %>
         </div>
       <% elsif pending_request %>
         <div class="row justify-content-center">
@@ -39,6 +39,7 @@
           <%= link_to 'Decline', decline_relationship_path(friend.friend_requests_as_requestor.first.id), method: :patch, class: 'btn btn-secondary' %>
         </div>
       <% end %>
+      <div class="overlay"></div>
     </div>
   <% end %>
 </div>

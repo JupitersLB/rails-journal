@@ -3,16 +3,26 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
   .friend-card {
+    position: relative;
     width: 280px;
     border-radius: 8px;
     padding: 8px;
     background-color: rgba(70, 70, 70, 0.9);
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0);
+      transition: background 0.5s ease;
+    }
     .friend-card-image {
       display: flex;
       justify-content: center;
       .friend-image {
-      width: 240px;
-      border-radius: 50%;
+        width: 240px;
+        border-radius: 50%;
       }
     }
     .friend-card-body {
@@ -21,6 +31,10 @@
         text-decoration: none;
         font-size: 24px;
       }
+    }
+    &:hover .overlay {
+      display: block;
+      background: rgba(0, 0, 0, .3);
     }
   }
 }
