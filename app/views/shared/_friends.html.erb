@@ -27,11 +27,11 @@
             friend.friend_requests_as_requestor.where(receiver: current_user).first.nil? &&
             friend != current_user %>
         <div class="row friend-button justify-content-center">
-          <%= link_to 'Add as Friend?', relationships_path(friend), method: 'post' %>
+          <%= link_to 'Add as Friend?', relationships_path(friend), method: 'post', class: 'col-8' %>
         </div>
       <% elsif pending_request %>
         <div class="row friend-button justify-content-center">
-          <%= link_to 'Cancel', cancel_relationship_path(friend.friend_requests_as_receiver.first.id), method: :patch %>
+          <%= link_to 'Cancel', cancel_relationship_path(friend.friend_requests_as_receiver.first.id), method: :patch, class: 'col-6' %>
         </div>
         <% elsif received %>
         <div class="row friend-buttons justify-content-center">
