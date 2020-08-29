@@ -14,7 +14,8 @@ class Notification {
   newNotifications() {
     fetch(`${window.location.origin}/notifications.json`)
       .then(response => response.json())
-      .then(data => console.log(data));
+      .then(data => console.log(data))
+      .then(data => handleSucess(data));
 
   }
 }
