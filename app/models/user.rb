@@ -27,6 +27,10 @@ class User < ApplicationRecord
   has_many :friend_as, through: :friendships_as_friend_b
   has_many :friend_bs, through: :friendships_as_friend_a
 
+  # notifications
+
+  has_many :notifications, foreign_key: :recipient_id
+
   include PgSearch::Model
   pg_search_scope :search_by_username,
                   against: :username,
