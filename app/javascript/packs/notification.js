@@ -1,27 +1,24 @@
 class Notification {
 
   constructor() {
-    notification = document.querySelector("[data-behavior='notifications']")
+    this.notification = document.querySelector("[data-behavior='notifications']")
 
-    if (notification) {
-      handleSucess(notifications.data("notifications"))
+    if (this.notification) {
+      // this.handleSucess(this.notification.dataset.behavior)
       let links = document.querySelectorAll("[data-behavior='notifications-link']")
       links.forEach((link) => {
-        link.addEventListener('click', handleClick());
+        link.addEventListener('click', this.handleClick());
       })
 
-      setInterval(newNotifications(), 3000)
+      setInterval(this.newNotifications(), 3000)
     }
   }
 
   newNotifications() {
+    console.log('hello world')
     fetch(`${window.location.origin}/notifications.json`)
-      .then(response => {
-        if (response.ok) {
-          response.json()}
-        })
-      .then(data => console.log(data))
-      .then(data => handleSucess(data));
+      .then(response => response.json())
+      .then(data => this.handleSucess(data));
   }
 
   handleClick(e) {
@@ -37,31 +34,32 @@ class Notification {
     .then(response => {
       if (response.ok) {
         document.querySelector("[data-behavior='unread-count']").text('')
-        document.querySelector("[data-behavior='notification-bell']").removeClass('notify')
-        document.querySelector("[data-behavior='unread-count']").removeClass('notification-count')
+        document.querySelector("[data-behavior='notification-bell']").classList.remove('notify')
+        document.querySelector("[data-behavior='unread-count']").classList.remove('notification-count')
       }
     })
   }
 
   handleSucess(data) {
-    items = data.map((notification) => {
-      notification.template
-    })
-
-    unread_count = 0
+    this.items = data.map((notification) => {
+      notification.template;
+      console.log(notification.template);
+    });
+    console.log(this.items);
+    this.unread_count = 0
     data.forEach((notification) => {
       if (notification.unread)
-        document.querySelector("[data-behavior='notification-bell']").addClass('notify')
-        unread_count += 1
+        document.querySelector("[data-behavior='notification-bell']").classList.add('notify')
+        this.unread_count += 1
     })
 
-    if (unread_count > 0)
-      document.querySelector("[data-behavior='unread-count']").text(unread_count)
-      document.querySelector("[data-behavior='unread-count']").addClass('notification-count')
+    if (this.unread_count > 0)
+      document.querySelector("[data-behavior='unread-count']").innerHTML = this.unread_count;
+      document.querySelector("[data-behavior='unread-count']").classList.add('notification-count')
 
-    document.querySelector("[data-behavior='notification-items']").html(items)
+    document.querySelector("[data-behavior='notification-items']").insertAdjacentHTML('afterbegin', '<a class="dropdown-item read" href="/posts/34"> JupitersLB made a post</a>')
   }
 }
 
-new Notification
+new Notification;
 
