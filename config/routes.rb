@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   patch '/cancel/:id', to: 'relationships#cancel', as: 'cancel_relationship'
   patch '/accept/:id', to: 'relationships#accept', as: 'accept_relationship'
   patch '/decline/:id', to: 'relationships#decline', as: 'decline_relationship'
-  get '/:username', to: 'users#show', as: 'user'
+  get '/user/:username', to: 'users#show', as: 'user'
 
   resources :notifications do
     collection do

@@ -1,11 +1,14 @@
 class Notification {
 
-  constructor {
+  constructor() {
     notification = document.querySelector("[data-behavior='notifications']")
 
-    if (notification.length > 1) {
+    if (notification) {
       handleSucess(notifications.data("notifications"))
-      document.querySelectorAll("[data-behavior='notifications-link']").on "click", handleClick()
+      let links = document.querySelectorAll("[data-behavior='notifications-link']")
+      links.forEach((link) => {
+        link.addEventListener('click', handleClick());
+      })
 
       setInterval(newNotifications(), 3000)
     }
