@@ -15,7 +15,6 @@ class Notification {
   }
 
   newNotifications() {
-    console.log('hello world')
     fetch(`${window.location.origin}/notifications.json`)
       .then(response => response.json())
       .then(data => this.handleSucess(data));
@@ -33,19 +32,17 @@ class Notification {
     // .then(data => handleSucess(data));
     .then(response => {
       if (response.ok) {
-        document.querySelector("[data-behavior='unread-count']").text('')
-        document.querySelector("[data-behavior='notification-bell']").classList.remove('notify')
-        document.querySelector("[data-behavior='unread-count']").classList.remove('notification-count')
+        document.querySelector("[data-behavior='unread-count']").innerHTML = '';
+        document.querySelector("[data-behavior='notification-bell']").classList.remove('notify');
+        document.querySelector("[data-behavior='unread-count']").classList.remove('notification-count');
       }
     })
   }
 
   handleSucess(data) {
-    this.items = data.map((notification) => {
-      notification.template;
-      console.log(notification.template);
+    let items = data.map((notification) => {
+      return notification.template;
     });
-    console.log(this.items);
     this.unread_count = 0
     data.forEach((notification) => {
       if (notification.unread)
@@ -57,7 +54,7 @@ class Notification {
       document.querySelector("[data-behavior='unread-count']").innerHTML = this.unread_count;
       document.querySelector("[data-behavior='unread-count']").classList.add('notification-count')
 
-    document.querySelector("[data-behavior='notification-items']").insertAdjacentHTML('afterbegin', '<a class="dropdown-item read" href="/posts/34"> JupitersLB made a post</a>')
+    document.querySelector("[data-behavior='notification-items']").insertAdjacentHTML('afterbegin', items)
   }
 }
 

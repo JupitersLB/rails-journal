@@ -4,4 +4,8 @@ class NotificationPolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def mark_as_read?
+    true
+  end
 end
