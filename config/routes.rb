@@ -12,4 +12,10 @@ Rails.application.routes.draw do
   patch '/decline/:id', to: 'relationships#decline', as: 'decline_relationship'
   get '/:username', to: 'users#show', as: 'user'
 
+  resources :notifications do
+    collection do
+      patch :mark_as_read
+    end
+  end
+
 end
