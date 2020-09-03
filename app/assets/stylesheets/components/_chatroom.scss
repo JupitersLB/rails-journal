@@ -3,3 +3,25 @@
   height: 68vh;
   padding: 16px;
 }
+
+.chatlist-card {
+  padding: 16px;
+  width: 90%;
+  &:hover {
+    border-radius: 20px;
+    background-color: rgba(60, 60, 60, 0.9);
+  }
+  .chatlist-card-header {
+    .active {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: green;
+    }
+  }
+}
+
+.chatbox {
+  height: 68vh;
+  padding: 16px;
+}

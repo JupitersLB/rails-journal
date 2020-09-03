@@ -4,14 +4,47 @@
       <div class="col-4 chatroom-list">
         <% @chatrooms.each do |chatroom| %>
         <div class="chatlist-card">
-          <h3 data-chatroom-id="<%= chatroom.id %>">
-            <%= chatroom.opposed_user(current_user).username %>
-          </h3>
-          <p><%= chatroom.messages.last.content %></p>
+          <div class="row chatlist-card-header align-items-center">
+            <div class="col-10">
+              <h3 class="mb-0" data-chatroom-id="<%= chatroom.id %>">
+                <%= chatroom.opposed_user(current_user).username %>
+              </h3>
+            </div>
+            <div class="col-2 text-right">
+              <% if (Time.now - chatroom.opposed_user(current_user).last_seen_at) / 60 < 10 %>
+                <div class="active"></div>
+              <% end %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <p class="mb-1"><%= chatroom.messages.last.content %></p>
+            </div>
+          </div>
         </div>
         <% end %>
       </div>
       <div class="col-8 chatbox">
+        <h3>Messages go here</h3>
+        <h3>Messages go here</h3>
+        <h3>Messages go here</h3>
+        <h3>Messages go here</h3>
+        <h3>Messages go here</h3>
+        <h3>Messages go here</h3>
+        <h3>Messages go here</h3>
+        <h3>Messages go here</h3>
+        <h3>Messages go here</h3>
+        <h3>Messages go here</h3>
+        <h3>Messages go here</h3>
+        <h3>Messages go here</h3>
+        <h3>Messages go here</h3>
+        <h3>Messages go here</h3>
+        <h3>Messages go here</h3>
+        <h3>Messages go here</h3>
+        <h3>Messages go here</h3>
+        <h3>Messages go here</h3>
+        <h3>Messages go here</h3>
+        <h3>Messages go here</h3>
         <h3>Messages go here</h3>
       </div>
     </div>
