@@ -1,0 +1,70 @@
+<div class="container pt-5">
+  <div class="chatroom-container">
+    <div class="row">
+      <div class="col-4 chatroom-list">
+        <% @chatrooms.each do |chatroom| %>
+        <div class="chatlist-card">
+          <div class="row chatlist-card-header align-items-center">
+            <div class="col-10">
+              <h3 class="mb-0" data-chatroom-id="<%= chatroom.id %>">
+                <%= chatroom.opposed_user(current_user).username %>
+              </h3>
+            </div>
+            <div class="col-2 text-right">
+              <% if (Time.now - chatroom.opposed_user(current_user).last_seen_at) / 60 < 10 %>
+                <div class="active"></div>
+              <% end %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <p class="mb-1"><%= chatroom.messages.last.content %></p>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      <div class="col-8 chatbox">
+        <div class="chatbox-details">
+          <div class="row">
+            <div class="col-8">
+              <p>opposite user name here</p>
+              <p>time ago in here</p>
+            </div>
+            <div class="col-4">
+              <p>place image here</p>
+            </div>
+          </div>
+        </div>
+        <div class="chatbox-messages">
+          <h3>Messages go here</h3>
+          <h3>Messages go here</h3>
+          <h3>Messages go here</h3>
+          <h3>Messages go here</h3>
+          <h3>Messages go here</h3>
+          <h3>Messages go here</h3>
+          <h3>Messages go here</h3>
+          <h3>Messages go here</h3>
+          <h3>Messages go here</h3>
+          <h3>Messages go here</h3>
+          <h3>Messages go here</h3>
+          <h3>Messages go here</h3>
+          <h3>Messages go here</h3>
+          <h3>Messages go here</h3>
+          <h3>Messages go here</h3>
+          <h3>Messages go here</h3>
+          <h3>Messages go here</h3>
+          <h3>Messages go here</h3>
+          <h3>Messages go here</h3>
+          <h3>Messages go here</h3>
+          <h3>Messages go here</h3>
+        </div>
+        <div class="chatbox-user-input">
+          <p>submit your message here</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
