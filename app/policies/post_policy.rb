@@ -6,7 +6,7 @@ class PostPolicy < ApplicationPolicy
   end
 
   def index?
-    true
+    record.user = user
   end
 
   def create?

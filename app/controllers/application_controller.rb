@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!, :configure_permitted_parameters, if: :devise_controller?
+  before_action :authenticate_user!
+  before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_last_seen_at, if: proc {
                                          user_signed_in? &&
                                            (current_user.last_seen_at.nil? ||
