@@ -3,13 +3,8 @@ class Notification {
   constructor() {
     this.notification = document.querySelector("[data-behavior='notifications']")
     if (this.notification) {
-      // this.handleSucess(this.notification.dataset.behavior)
       let link = document.querySelector("[data-behavior='notifications-link']")
       link.addEventListener('click',  this.handleClick);
-      // links.forEach((link) => {
-      //   console.log(link)
-      //   link.addEventListener('click', this.handleClick());
-      // })
       setInterval(this.newNotifications, 3000);
     }
   }
