@@ -41,7 +41,6 @@ class Notification {
     })
       .then(response => response.json())
       .then(data => { if (data.success) {
-        console.log('hello click')
         document.querySelector("[data-behavior='unread-count']").innerHTML = ''
         document.querySelector("[data-behavior='notification-bell']").classList.remove('notify');
         document.querySelector("[data-behavior='unread-count']").classList.remove('notification-count');
