@@ -25,15 +25,18 @@
   height: 68vh;
   padding: 16px;
   .chatbox-details {
-    height: 8vh;
+    padding: 8px;
+    height: 10vh;
     border-bottom: 1px solid black;
   }
 
   .chatbox-messages {
-    height: 52vh;
+    padding: 8px;
+    height: 50vh;
     overflow: scroll;
   }
   .chatbox-user-input {
+    padding: 8px;
     border-top: 1px solid black;
   }
 }
