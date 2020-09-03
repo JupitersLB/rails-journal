@@ -1,10 +1,21 @@
-<div class="container">
-  <div class="my-container">
-    <h1>chatrooms</h1>
+<div class="container pt-5">
+  <div class="chatroom-container">
+    <div class="row">
+      <div class="col-4 chatroom-list">
+        <% @chatrooms.each do |chatroom| %>
+        <div class="chatlist-card">
+          <h3 data-chatroom-id="<%= chatroom.id %>">
+            <%= chatroom.opposed_user(current_user).username %>
+          </h3>
+          <p><%= chatroom.messages.last.content %></p>
+        </div>
+        <% end %>
+      </div>
+      <div class="col-8 chatbox">
+        <h3>Messages go here</h3>
+      </div>
+    </div>
 
-    <% @chatrooms.each do |chatroom| %>
-      <h3><%= chatroom.opposed_user(current_user).username %></h3>
-    <% end %>
   </div>
 </div>
 

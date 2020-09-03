@@ -18,6 +18,24 @@
   }
 }
 
+.chatroom-container{
+  margin-top: 50px;
+  margin-bottom: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: $trans-gray;
+  height: 75vh;
+  padding: 30px 30px;
+  border-radius: 25px;
+  color: $teal;
+  a {
+    color: $teal;
+  }
+  input {
+    color: $teal;
+  }
+}
+
 .devise-container {
   margin: 50px 100px;
   background-color: $trans-gray;
