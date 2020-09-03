@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="my-container">
+    <h1>chatrooms</h1>
+
+    <% @chatrooms.each do |chatroom| %>
+      <h3><%= chatroom.opposed_user(current_user).username %></h3>
+    <% end %>
+  </div>
+</div>
+
