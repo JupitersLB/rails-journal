@@ -24,4 +24,16 @@
 .chatbox {
   height: 68vh;
   padding: 16px;
+  .chatbox-details {
+    height: 8vh;
+    border-bottom: 1px solid black;
+  }
+
+  .chatbox-messages {
+    height: 52vh;
+    overflow: scroll;
+  }
+  .chatbox-user-input {
+    border-top: 1px solid black;
+  }
 }
