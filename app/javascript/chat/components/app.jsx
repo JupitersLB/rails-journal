@@ -36,7 +36,7 @@ class App extends Component {
         <div className="chatroom-container">
           <div className="row">
             <ChatList chats={chats} chat={selectedChat} changeSelectedChat={this.changeSelectedChat} />
-            <ChatBox messages={messages} chatFriend={selectedChat.friend} />
+            <ChatBox messages={messages} chatFriend={selectedChat.friend} chatId={selectedChat.id}/>
           </div>
         </div>
       </div>

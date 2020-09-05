@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { fetchChatrooms } from '../actions/index';
 import Chat from './chat';
 
 export default class ChatList extends Component {

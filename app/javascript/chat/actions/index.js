@@ -19,3 +19,23 @@ export function fetchMessages(id) {
     promise
   };
 }
+
+export function createMessage(id, content) {
+  const url = `${BASE_URL}/chatrooms/${id}/messages`;
+  const body = { content };
+  const csrfToken = document.querySelector('meta[name="csrf-token"]').attributes.content.value;
+  const promise = fetch(url, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'X-CSRF-Token': csrfToken
+    },
+    credentials: 'same-origin',
+    body: JSON.stringify(body)
+  }).then(r => r.json());
+
+  return {
+    promise
+  };
+}
