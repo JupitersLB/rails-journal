@@ -18,8 +18,16 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :chatrooms, only: [ :index, :show ] do
-    resources :messages, only: :create
+  resources :chats, only: :index
+
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :chatrooms, only: [ :index, :show ] do
+        resources :messages, only: :create
+      end
+    end
   end
+
+  mount ActionCable.server => "/cable"
 
 end

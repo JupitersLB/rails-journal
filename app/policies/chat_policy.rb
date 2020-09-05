@@ -1,4 +1,4 @@
-class ChatroomPolicy < ApplicationPolicy
+class ChatPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
@@ -6,10 +6,6 @@ class ChatroomPolicy < ApplicationPolicy
   end
 
   def index?
-    true
-  end
-
-  def show?
     true
   end
 end
