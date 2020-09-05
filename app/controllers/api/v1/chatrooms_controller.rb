@@ -11,10 +11,12 @@ class Api::V1::ChatroomsController < ApplicationController
 
   def show
     chatroom = Chatroom.find(params[:id])
+    messages = chatroom.messages
     message = Message.new
 
-    render json: chatroom
-    authorize @chatroom
-    authorize @message
+    render json: [messages]
+    authorize chatroom
+    authorize message
+    authorize messages
   end
 end

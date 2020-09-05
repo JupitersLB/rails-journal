@@ -1,6 +1,6 @@
 const BASE_URL = '/api/v1';
 
-export default function fetchChatrooms() {
+export function fetchChatrooms() {
   const url = `${BASE_URL}/chatrooms`
   const promise = fetch(url, { credentials: "same-origin"}).then(r => r.json());
 
@@ -10,3 +10,12 @@ export default function fetchChatrooms() {
   };
 }
 
+export function fetchMessages(id) {
+  const url = `${BASE_URL}/chatrooms/${id}`
+  const promise = fetch(url, { credentials: "same-origin"}).then(r => r.json());
+
+  return {
+    // type: FETCH_CHATROOMS,
+    promise
+  };
+}

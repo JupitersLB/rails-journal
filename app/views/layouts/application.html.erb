@@ -16,7 +16,7 @@
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <%= yield %>
-    <%= link_to root_path do %>
+    <%= link_to chats_path do %>
       <i class="message fa fa-users" aria-hidden="true"></i>
     <% end %>
     <%= yield :after_js %>

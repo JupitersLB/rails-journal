@@ -1,19 +1,47 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-import ChatList from './chatList'
+import { fetchChatrooms, fetchMessages } from '../actions/index';
 
-const App = () => {
-  return (
-    <div className="container pt-5">
-      <div className="chatroom-container">
-        <div className="row">
-          <ChatList />
-          <div className="col-8 chatbox">
-        </div>
+import ChatList from './chatList';
+import ChatBox from './chatBox';
+
+class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      chats: [],
+      selectedChat: '',
+      messages: []
+    }
+  }
+
+  componentDidMount() {
+    fetchChatrooms().promise.then(r => r.map(chat => this.setState({
+      chats: [...this.state.chats, chat]
+    })))
+  }
+
+  changeSelectedChat = (newSelectedChat) => {
+    this.setState({ selectedChat: newSelectedChat });
+    fetchMessages(newSelectedChat).promise.then(r => r.map(message => this.setState({
+      messages: [message]
+    })))
+  }
+
+  render() {
+    const {chats, selectedChat, messages} = this.state
+    return (
+      <div className="container pt-5">
+        <div className="chatroom-container">
+          <div className="row">
+            <ChatList chats={chats} changeSelectedChat={this.changeSelectedChat} />
+            <ChatBox messages={messages} />
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;

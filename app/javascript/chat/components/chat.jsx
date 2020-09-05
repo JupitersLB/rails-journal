@@ -1,21 +1,17 @@
 import React, { Component } from 'react';
 
-import fetchChatrooms from '../actions/index'
 
 export default class Chat extends Component {
 
-  // handleClick = () => {
-  //   const { gifId, changeSelectGif } = this.props;
-  //   changeSelectGif(gifId);
-  // }
-
-
+  handleClick = () => {
+    const { chatId, changeSelectedChat } = this.props;
+    changeSelectedChat(chatId);
+  }
 
   render() {
     const { chatId, chatFriend } = this.props;
-    console.log({chatFriend})
     return (
-      <div className="chatlist-card">
+      <div className="chatlist-card" onClick={this.handleClick} >
         <div className="row chatlist-card-header align-items-center">
           <div className="col-10">
             <h3 className="mb-0">{chatFriend}</h3>
