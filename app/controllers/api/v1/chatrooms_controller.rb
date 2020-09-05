@@ -10,13 +10,21 @@ class Api::V1::ChatroomsController < ApplicationController
   end
 
   def show
-    chatroom = Chatroom.find(params[:id])
-    messages = chatroom.messages
+    messages = policy_scope(Message)
+               .where(chatroom: params[:id])
+               .includes(:user)
+               .map do |m|
+                 {
+                   id: m.id,
+                   content: m.content,
+                   chatroom: m.chatroom_id,
+                   username: m.user.username,
+                   created_at: m.created_at
+                 }
+               end
     message = Message.new
 
     render json: [messages]
-    authorize chatroom
     authorize message
-    authorize messages
   end
 end

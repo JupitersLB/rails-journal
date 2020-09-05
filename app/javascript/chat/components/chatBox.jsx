@@ -8,6 +8,29 @@ import Message from './message';
 
 export default class ChatBox extends Component {
 
+  // componentDidMount() { // For the first channel
+  //   this.subscribeActionCable(this.props);
+  // }
+
+  // componentWillReceiveProps(nextProps) { // For after switching channels
+  //   if (this.props.chatroom_id != nextProps.chatroom_id) {
+  //     this.subscribeActionCable(nextProps);
+  //   }
+  // }
+
+  // subscribeActionCable = (props) => {
+  //   App[`chatroom_${props.chatId}`] = App.cable.subscriptions.create(
+  //     { chatroom: 'ChatroomChannel', name: props.chatId },
+  //     {
+  //       received: (message) => {
+  //         if (message.chatroom_id === props.chatId) {
+  //           props.appendMessage(message);
+  //         }
+  //       }
+  //     }
+  //   );
+  // }
+
   render() {
     const {messages, chatFriend, chatId} = this.props;
     return (
@@ -20,7 +43,7 @@ export default class ChatBox extends Component {
           </div>
         </div>
         <div className="chatbox-messages">
-          { messages.map(message => message.map(m => <Message content={m.content} author={m.user_id} time={m.created_at}  key={m.id} />)) }
+          { messages.map(message => message.map(m => <Message content={m.content} author={m.username} time={m.created_at}  key={m.id} />)) }
         </div>
         <div className="chatbox-user-input">
           <MessageForm chatId={chatId}/>
