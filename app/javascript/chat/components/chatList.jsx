@@ -15,7 +15,7 @@ export default class ChatList extends Component {
       <div className="col-4 chatroom-list">
         <span>Chat List</span>
         <div>
-          { chats.map(chat => <Chat chatId={chat.id} chatFriend={chat.friend} key={chat.id} changeSelectedChat={changeSelectedChat} />) }
+          { chats.map(chat => <Chat chat={chat} key={chat.id} changeSelectedChat={changeSelectedChat} />) }
         </div>
       </div>
     );

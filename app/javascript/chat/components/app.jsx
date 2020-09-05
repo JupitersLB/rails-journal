@@ -24,7 +24,7 @@ class App extends Component {
 
   changeSelectedChat = (newSelectedChat) => {
     this.setState({ selectedChat: newSelectedChat });
-    fetchMessages(newSelectedChat).promise.then(r => r.map(message => this.setState({
+    fetchMessages(newSelectedChat.id).promise.then(r => r.map(message => this.setState({
       messages: [message]
     })))
   }
@@ -35,8 +35,8 @@ class App extends Component {
       <div className="container pt-5">
         <div className="chatroom-container">
           <div className="row">
-            <ChatList chats={chats} changeSelectedChat={this.changeSelectedChat} />
-            <ChatBox messages={messages} />
+            <ChatList chats={chats} chat={selectedChat} changeSelectedChat={this.changeSelectedChat} />
+            <ChatBox messages={messages} chatFriend={selectedChat.friend} />
           </div>
         </div>
       </div>

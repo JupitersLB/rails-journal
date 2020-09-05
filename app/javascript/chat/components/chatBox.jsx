@@ -9,13 +9,13 @@ import Message from './message';
 export default class ChatBox extends Component {
 
   render() {
-    const {messages} = this.props;
+    const {messages, chatFriend} = this.props;
     return (
       <div className="col-8 chatbox">
         <div className="chatbox-details">
           <div className="row">
             <div className="col">
-              <h3>name here</h3>
+              <h3>{chatFriend}</h3>
             </div>
           </div>
         </div>
