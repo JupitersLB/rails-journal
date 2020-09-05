@@ -13,13 +13,10 @@ class Chatroom < ApplicationRecord
   end
 
   def self.find_user_chatrooms(user)
-    if Chatroom.where(sender: user).exists?
-      Chatroom.where(sender: user)
-    elsif Chatroom.where(receiver: user).exists?
-      Chatroom.where(receiver: user)
-    else
-      'No Chatrooms'
-    end
+    chatrooms = []
+    chatrooms << Chatroom.where(sender: user) if Chatroom.where(sender: user).exists?
+    chatrooms << Chatroom.where(receiver: user) if Chatroom.where(receiver: user).exists?
+    chatrooms
   end
 
   def opposed_user(user)

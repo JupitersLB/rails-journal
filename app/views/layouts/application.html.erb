@@ -9,6 +9,7 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'notification', 'data-turbolinks-track': 'reload', defer: true %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+
   </head>
 
   <body>
@@ -18,6 +19,7 @@
     <%= link_to root_path do %>
       <i class="message fa fa-users" aria-hidden="true"></i>
     <% end %>
+    <%= yield :after_js %>
     <%= render 'shared/footer' %>
   </body>
 </html>
