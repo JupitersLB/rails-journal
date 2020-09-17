@@ -13,6 +13,11 @@ export default class ChatBox extends Component {
     // this.subscribeActionCable(chat);
   }
 
+  componentDidUpdate() {
+    const objDiv = document.querySelector(".chatbox-messages");
+    objDiv.scrollTop = objDiv.scrollHeight;
+  }
+
   // componentWillReceiveProps(nextProps) { // For after switching channels
   //   const {chat} = this.props
   //   if (chat.id != nextProps.id) {
@@ -35,12 +40,13 @@ export default class ChatBox extends Component {
 
   render() {
     const {messages, chatPhoto, chatFriend, chatId} = this.props;
+    const url = `user/${chatFriend}`
     return (
       <div className="col-8 chatbox">
         <div className="chatbox-details">
           <div className="row align-items-center justify-content-between">
             <div className="col-2">
-              <h3>{chatFriend}</h3>
+              <a href={url}><h3>{chatFriend}</h3></a>
             </div>
             <div className="col-2">
               <img className="avatar-big" src={chatPhoto} alt=""></img>
