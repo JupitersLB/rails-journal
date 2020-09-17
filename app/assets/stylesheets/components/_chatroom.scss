@@ -26,7 +26,7 @@
   padding: 16px;
   .chatbox-details {
     padding: 8px;
-    height: 10vh;
+    height: 12vh;
     border-bottom: 1px solid black;
   }
 
@@ -38,6 +38,12 @@
   .chatbox-user-input {
     padding: 8px;
     border-top: 1px solid black;
+    .form-control {
+      background-color: rgba(100, 100, 100, 0.7);
+      &:focus {
+        color: inherit;
+      }
+    }
   }
 }
 

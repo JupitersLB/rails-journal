@@ -34,13 +34,16 @@ export default class ChatBox extends Component {
   // }
 
   render() {
-    const {messages, chatFriend, chatId} = this.props;
+    const {messages, chatPhoto, chatFriend, chatId} = this.props;
     return (
       <div className="col-8 chatbox">
         <div className="chatbox-details">
-          <div className="row">
-            <div className="col">
+          <div className="row align-items-center justify-content-between">
+            <div className="col-2">
               <h3>{chatFriend}</h3>
+            </div>
+            <div className="col-2">
+              <img className="avatar-big" src={chatPhoto} alt=""></img>
             </div>
           </div>
         </div>
