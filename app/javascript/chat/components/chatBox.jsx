@@ -9,27 +9,29 @@ import Message from './message';
 export default class ChatBox extends Component {
 
   componentDidMount() { // For the first channel
-    this.subscribeActionCable(this.props);
+    const {chat} = this.props
+    // this.subscribeActionCable(chat);
   }
 
-  componentWillReceiveProps(nextProps) { // For after switching channels
-    if (this.props.chatroom_id != nextProps.chatroom_id) {
-      this.subscribeActionCable(nextProps);
-    }
-  }
+  // componentWillReceiveProps(nextProps) { // For after switching channels
+  //   const {chat} = this.props
+  //   if (chat.id != nextProps.id) {
+  //     this.subscribeActionCable(nextProps);
+  //   }
+  // }
 
-  subscribeActionCable = (props) => {
-    App[`chatroom_${this.props}`] = App.cable.subscriptions.create(
-      { chatroom: 'ChatroomChannel', name: props.chatId },
-      {
-        received: (message) => {
-          if (message.chatroom_id === props.chatId) {
-            props.appendMessage(message);
-          }
-        }
-      }
-    );
-  }
+  // subscribeActionCable = (props) => {
+  //   App[`chatroom_${this.props}`] = App.cable.subscriptions.create(
+  //     { chatroom: 'ChatroomChannel', name: props.chatId },
+  //     {
+  //       received: (message) => {
+  //         if (message.chatroom_id === props.chatId) {
+  //           props.appendMessage(message);
+  //         }
+  //       }
+  //     }
+  //   );
+  // }
 
   render() {
     const {messages, chatFriend, chatId} = this.props;

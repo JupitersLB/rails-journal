@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 export default class Message extends Component {
 
   render() {
-    const { content, author, time } = this.props;
+    const { content, author } = this.props;
+    const time = new Date(this.props.time).toLocaleTimeString()
     return (
       <div className="message-container">
       <i className="author">
