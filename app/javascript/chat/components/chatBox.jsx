@@ -40,7 +40,7 @@ export default class ChatBox extends Component {
 
   render() {
     const {messages, chatPhoto, chatFriend, chatId} = this.props;
-    const url = `user/${chatFriend}`
+    const url = `user/${chatFriend}`;
     return (
       <div className="col-8 chatbox">
         <div className="chatbox-details">
