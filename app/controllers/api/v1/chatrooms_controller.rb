@@ -9,7 +9,7 @@ class Api::V1::ChatroomsController < ApplicationController
       {
         id: chat[0],
         friend: chat[1],
-        photo: User.find_by_username(chat[1]).photo.attached? ? Cloudinary::Utils.cloudinary_url(User.find_by_username(chat[1]).photo.key) : "avatar.png",
+        photo: User.find_by_username(chat[1]).photo.attached? ? Cloudinary::Utils.cloudinary_url(User.find_by_username(chat[1]).photo.key) : ActionController::Base.helpers.asset_path("avatar.png")
       }
     end
     render json: chatrooms
