@@ -1,11 +1,11 @@
 <% if notification.read_at? %>
-  <%= link_to post_path(notification.notifiable.id), class: "dropdown-item read" do %>
+  <%= link_to relationships_path, class: "dropdown-item read" do %>
     <%= notification.actor.username %>
     <%= notification.action %>
     a <%= notification.notifiable_type.underscore.humanize.downcase %>
   <% end %>
 <% else %>
-  <%= link_to post_path(notification.notifiable.id), class: "dropdown-item unread" do %>
+  <%= link_to relationships_path, class: "dropdown-item unread" do %>
     <%= notification.actor.username %>
     <%= notification.action %>
     a <%= notification.notifiable_type.underscore.humanize.downcase %>

@@ -1,0 +1,13 @@
+<% if notification.read_at? %>
+  <%= link_to user_path(notification.notifiable.opposed_user(current_user).username), class: "dropdown-item read" do %>
+    <%= notification.actor.username %>
+    <%= notification.action %>
+    the <%= notification.notifiable_type.underscore.humanize.downcase %>
+  <% end %>
+<% else %>
+  <%= link_to user_path(notification.notifiable.opposed_user(current_user).username), class: "dropdown-item unread" do %>
+    <%= notification.actor.username %>
+    <%= notification.action %>
+    the <%= notification.notifiable_type.underscore.humanize.downcase %>
+  <% end %>
+<% end %>

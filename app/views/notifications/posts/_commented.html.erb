@@ -2,12 +2,12 @@
   <%= link_to post_path(notification.notifiable.id), class: "dropdown-item read" do %>
     <%= notification.actor.username %>
     <%= notification.action %>
-    a <%= notification.notifiable_type.underscore.humanize.downcase %>
+    on a <%= notification.notifiable_type.underscore.humanize.downcase %>
   <% end %>
 <% else %>
   <%= link_to post_path(notification.notifiable.id), class: "dropdown-item unread" do %>
     <%= notification.actor.username %>
     <%= notification.action %>
-    a <%= notification.notifiable_type.underscore.humanize.downcase %>
+    on a <%= notification.notifiable_type.underscore.humanize.downcase %>
   <% end %>
 <% end %>

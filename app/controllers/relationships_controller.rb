@@ -12,7 +12,7 @@ class RelationshipsController < ApplicationController
     friend = FriendRequest.new(requestor: current_user, receiver: User.find(params[:format]))
     authorize friend
     if friend.save
-      Notification.create(recipient: friend.receiver, actor: friend.requestor, action: "requested", notifiable: friend)
+      Notification.create(recipient: friend.receiver, actor: friend.requestor, action: "submitted", notifiable: friend)
       redirect_to relationships_path
     else
       render :search
@@ -26,10 +26,11 @@ class RelationshipsController < ApplicationController
   end
 
   def accept
-    friendship = Friendship.new(friend_a: @friend_request.requestor, friend_b: current_user)
-    friendship.save
     @friend_request.status = "accepted"
     @friend_request.save
+    friendship = Friendship.new(friend_a: @friend_request.requestor, friend_b: current_user)
+    friendship.save
+    Notification.create(recipient: @friend_request.opposed_user(current_user), actor: current_user, action: "accepted", notifiable: @friend_request)
     authorize @friend_request
     redirect_to relationships_path
   end

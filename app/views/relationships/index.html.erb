@@ -1,11 +1,13 @@
 <div class="container pt-5">
   <div class="main-container">
     <div class="row justify-content-between align-items-center">
-      <h1 class="col pt-3"><i class="fa fa-users" aria-hidden="true"></i> Friends</h1>
-      <div class="col text-right">
-        <%= form_tag(search_path, method: "get") do %>
-          <%= text_field_tag :search, params[:search], placeholder: "Find friends" %>
-          <%= submit_tag "Search" %>
+      <h1 class="col-4 pt-3"><i class="fa fa-users" aria-hidden="true"></i> Friends</h1>
+      <div class="offset-4 col-4 text-right">
+        <%= form_tag(search_path, method: "get", class: "form-inline") do %>
+          <div class="form-group">
+            <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Find friends" %>
+            <%= submit_tag "Search", class: "ml-3 btn btn-outline-secondary" %>
+          </div>
         <% end %>
       </div>
     </div>

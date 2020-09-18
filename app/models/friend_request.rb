@@ -9,4 +9,8 @@ class FriendRequest < ApplicationRecord
       errors.add(:requestor, 'Friend request exists!')
     end
   end
+
+  def opposed_user(user)
+    user == receiver ? requestor : receiver
+  end
 end
