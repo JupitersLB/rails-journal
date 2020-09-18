@@ -23,6 +23,8 @@
       justify-content: center;
       .friend-image {
         width: 240px;
+        height:240px;
+        object-fit: cover;
         border-radius: 50%;
       }
     }
