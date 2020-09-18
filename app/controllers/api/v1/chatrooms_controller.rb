@@ -10,6 +10,7 @@ class Api::V1::ChatroomsController < ApplicationController
       friend = User.find_by_username(chat[1])
       {
         id: chat[0],
+        user: current_user.username,
         friend: chat[1],
         photo: friend.photo.attached? ? Cloudinary::Utils.cloudinary_url(friend.photo.key) : ActionController::Base.helpers.asset_path("avatar.png"),
         last_seen: ApplicationController.helpers.time_ago_in_words(friend.last_seen_at)

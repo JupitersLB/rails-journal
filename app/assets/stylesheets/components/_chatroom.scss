@@ -51,6 +51,25 @@
   }
 }
 
+.message-left {
+  text-align: left;
+  padding: 8px;
+  background-color: rgba(100, 100, 100, 0.5);
+  border-radius: 16px;
+  margin-right: 45%;
+  margin-top: 8px;
+}
+
+.message-right {
+  text-align: right;
+  padding-right: 16px;
+  padding: 8px;
+  background-color: rgba(20, 20, 20, 0.5);
+  border-radius: 16px;
+  margin-left: 45%;
+  margin-top: 8px;
+}
+
 .message-container > i {
   font-style: normal;
   font-weight: 600;
