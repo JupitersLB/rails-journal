@@ -9,7 +9,7 @@ export default class Message extends Component {
       <div className={position}>
         <div className="message-container">
           <i className="author">
-            <span>{author}</span>
+            <span>{author === user ? 'You' : author}</span>
             <small>{time}</small>
           </i>
           <p>{content}</p>
