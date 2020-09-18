@@ -9,3 +9,11 @@
 @import 'containers';
 @import 'friend-cards';
 @import 'chatroom';
+
+.form-control {
+  background-color: rgba(100, 100, 100, 0.7);
+  &:focus {
+    color: inherit;
+    background-color: rgba(100, 100, 100, 0.7);
+  }
+}
