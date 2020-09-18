@@ -12,6 +12,7 @@ class RelationshipsController < ApplicationController
     friend = FriendRequest.new(requestor: current_user, receiver: User.find(params[:format]))
     authorize friend
     if friend.save
+      Notification.create(recipient: friend.receiver, actor: friend.requestor, action: "requested", notifiable: friend)
       redirect_to relationships_path
     else
       render :search

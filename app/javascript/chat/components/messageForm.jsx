@@ -36,7 +36,6 @@ export default class MessageForm extends Component {
           value={this.state.value}
           onChange={this.handleChange}
         />
-        <button type="submit">Send</button>
       </form>
     );
   }

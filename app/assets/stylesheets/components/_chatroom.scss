@@ -8,6 +8,7 @@
   padding: 16px;
   width: 90%;
   &:hover {
+    cursor: pointer;
     border-radius: 20px;
     background-color: rgba(60, 60, 60, 0.9);
   }
@@ -26,7 +27,7 @@
   padding: 16px;
   .chatbox-details {
     padding: 8px;
-    height: 10vh;
+    height: 12vh;
     border-bottom: 1px solid black;
   }
 
@@ -38,6 +39,12 @@
   .chatbox-user-input {
     padding: 8px;
     border-top: 1px solid black;
+    .form-control {
+      background-color: rgba(100, 100, 100, 0.7);
+      &:focus {
+        color: inherit;
+      }
+    }
   }
 }
 
