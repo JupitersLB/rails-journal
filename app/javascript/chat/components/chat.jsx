@@ -10,6 +10,7 @@ export default class Chat extends Component {
 
   render() {
     const { chat } = this.props;
+    const time = chat.last_seen
     return (
       <div className="chatlist-card" onClick={this.handleClick} >
         <div className="row chatlist-card-header align-items-center">
@@ -22,7 +23,7 @@ export default class Chat extends Component {
         </div>
         <div className="row">
           <div className="col">
-            <p className="mb-1"></p>
+            <p className="mb-1">Last seen {time} ago</p>
           </div>
         </div>
       </div>

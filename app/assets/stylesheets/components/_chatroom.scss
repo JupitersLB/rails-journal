@@ -7,6 +7,9 @@
 .chatlist-card {
   padding: 16px;
   width: 90%;
+  p {
+    font-size: 12px;
+  }
   &:hover {
     cursor: pointer;
     border-radius: 20px;

@@ -5,11 +5,14 @@ class Api::V1::ChatroomsController < ApplicationController
                 .includes(:sender, :receiver)
                 .map { |chatroom| [chatroom.id, chatroom.sender.username, chatroom.receiver.username] }
     chatrooms.map { |chat| chat.delete(current_user.username) }
+    friend = User.find_by_username(chatrooms[0][1])
     chatrooms.map! do |chat|
+      friend = User.find_by_username(chat[1])
       {
         id: chat[0],
         friend: chat[1],
-        photo: User.find_by_username(chat[1]).photo.attached? ? Cloudinary::Utils.cloudinary_url(User.find_by_username(chat[1]).photo.key) : ActionController::Base.helpers.asset_path("avatar.png")
+        photo: friend.photo.attached? ? Cloudinary::Utils.cloudinary_url(friend.photo.key) : ActionController::Base.helpers.asset_path("avatar.png"),
+        last_seen: ApplicationController.helpers.time_ago_in_words(friend.last_seen_at)
       }
     end
     render json: chatrooms
