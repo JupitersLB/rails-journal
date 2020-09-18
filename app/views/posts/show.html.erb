@@ -27,7 +27,7 @@
             <% else %>
                 <p class="col-1"><i><small>annonymous</small></i></p>
             <% end %>
-            <p class="col-2"><i><small><%= comment.created_at.to_formatted_s(:long) %></small></i></p>
+            <p class="col-3"><i><small><%= comment.created_at.to_formatted_s(:long) %></small></i></p>
             <% if policy(comment).destroy? %>
               <%= link_to post_comment_path(@post, comment),
                           method: :delete,
