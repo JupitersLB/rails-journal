@@ -11,7 +11,6 @@ export default class ChatList extends Component {
     const {chats, changeSelectedChat} = this.props
     return (
       <div className="col-4 chatroom-list">
-        <span>Friends</span>
         <div>
           { chats.map(chat => <Chat chat={chat} key={chat.id} changeSelectedChat={changeSelectedChat} />) }
         </div>

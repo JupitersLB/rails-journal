@@ -3,7 +3,7 @@ class Api::V1::ChatroomsController < ApplicationController
     chatrooms = policy_scope(Chatroom)
                 .where(receiver: current_user).or(Chatroom.where(sender: current_user))
                 .includes(:sender, :receiver)
-                .map { |chatroom| [chatroom.id, chatroom.sender.username, chatroom.receiver.username, chatroom.messages.last.created_at] }
+                .map { |chatroom| [chatroom.id, chatroom.sender.username, chatroom.receiver.username, chatroom.messages.last ? chatroom.messages.last : 0] }
     chatrooms.map { |chat| chat.delete(current_user.username) }
     chatrooms.map! do |chat|
       friend = User.find_by_username(chat[1])
@@ -16,8 +16,9 @@ class Api::V1::ChatroomsController < ApplicationController
         last_message: chat[2]
       }
     end
-    # chatrooms.sort_by { |hsh| hsh[:last_message] }
-    render json: chatrooms.sort_by { |hsh| hsh[:last_message] }.reverse
+    chatrooms.sort_by! { |hsh| hsh[:last_message].created_at }.reverse!
+    chatrooms.each { |chat| chat[:last_message] = { created_at: ApplicationController.helpers.time_ago_in_words(chat[:last_message].created_at), content: chat[:last_message].content } }
+    render json: chatrooms
   end
 
   def show

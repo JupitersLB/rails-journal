@@ -39,14 +39,16 @@ export default class ChatBox extends Component {
   // }
 
   render() {
-    const {messages, chatUser, chatPhoto, chatFriend, chatId} = this.props;
+    const {messages, chat, chatUser, chatPhoto, chatFriend, chatId} = this.props;
     const url = `user/${chatFriend}`;
+    const content = chat.last_seen ? `Last seen ${chat.last_seen} ago` : ''
     return (
       <div className="col-8 chatbox">
         <div className="chatbox-details">
           <div className="row align-items-center justify-content-between">
-            <div className="col-2">
+            <div className="col-6">
               <a href={url}><h3>{chatFriend}</h3></a>
+              <p className="mb-1">{content}</p>
             </div>
             <div className="col-2">
               <img className="avatar-big" src={chatPhoto} alt=""></img>
