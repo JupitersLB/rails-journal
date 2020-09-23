@@ -7,7 +7,6 @@ import Chat from './chat';
 
 export default class ChatList extends Component {
 
-
   render() {
     const {chats, changeSelectedChat} = this.props
     return (

@@ -3,8 +3,7 @@ class Api::V1::ChatroomsController < ApplicationController
     chatrooms = policy_scope(Chatroom)
                 .where(receiver: current_user).or(Chatroom.where(sender: current_user))
                 .includes(:sender, :receiver)
-                .order("created_at DESC")
-                .map { |chatroom| [chatroom.id, chatroom.sender.username, chatroom.receiver.username, chatroom.updated_at] }
+                .map { |chatroom| [chatroom.id, chatroom.sender.username, chatroom.receiver.username, chatroom.messages.last.created_at] }
     chatrooms.map { |chat| chat.delete(current_user.username) }
     chatrooms.map! do |chat|
       friend = User.find_by_username(chat[1])
@@ -14,10 +13,11 @@ class Api::V1::ChatroomsController < ApplicationController
         friend: chat[1],
         photo: friend.photo.attached? ? Cloudinary::Utils.cloudinary_url(friend.photo.key) : ActionController::Base.helpers.asset_path("avatar.png"),
         last_seen: ApplicationController.helpers.time_ago_in_words(friend.last_seen_at),
-        updated_at: chat[2]
+        last_message: chat[2]
       }
     end
-    render json: chatrooms
+    # chatrooms.sort_by { |hsh| hsh[:last_message] }
+    render json: chatrooms.sort_by { |hsh| hsh[:last_message] }.reverse
   end
 
   def show
