@@ -19,7 +19,7 @@
       </div>
       <div class="post-card-comments pl-3">
         <% @post.comments.each do |comment| %>
-          <div class="row">
+          <div class="row pl-5">
             <% if policy(comment).friends? %>
               <%= link_to user_path(comment.user.username), class: 'col-1' do %>
                 <p><i><small> <%= comment.user.username %></small></i></p>
@@ -36,7 +36,7 @@
               <% end %>
             <% end %>
           </div>
-          <p><%= comment.note %></p>
+          <p class="pl-5"><%= comment.note %></p>
           <hr>
         <% end %>
       </div>
