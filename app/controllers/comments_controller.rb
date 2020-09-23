@@ -5,7 +5,9 @@ class CommentsController < ApplicationController
     @comment.post = Post.find(params[:post_id])
     authorize @comment
     if @comment.save
-      Notification.create(recipient: @comment.post.user, actor: current_user, action: "commented", notifiable: @comment.post)
+      unless @comment.post.user == current_user
+        Notification.create(recipient: @comment.post.user, actor: current_user, action: "commented", notifiable: @comment.post)
+      end
       redirect_to post_path(Post.find(params[:post_id]))
     else
       render template: "posts/show"
