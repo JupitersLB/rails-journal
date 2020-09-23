@@ -31,7 +31,8 @@ class RelationshipsController < ApplicationController
     friendship = Friendship.new(friend_a: @friend_request.requestor, friend_b: current_user)
     friendship.save
     Notification.create(recipient: @friend_request.opposed_user(current_user), actor: current_user, action: "accepted", notifiable: @friend_request)
-    Chatroom.create(sender: current_user, receiver: friendship.friend_a)
+    chatroom = Chatroom.create(sender: current_user, receiver: friendship.friend_a)
+    Message.create(content: "Hi, let's be friends!", user: current_user, chatroom: chatroom)
     authorize @friend_request
     redirect_to relationships_path
   end

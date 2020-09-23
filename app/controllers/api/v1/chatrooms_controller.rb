@@ -3,7 +3,7 @@ class Api::V1::ChatroomsController < ApplicationController
     chatrooms = policy_scope(Chatroom)
                 .where(receiver: current_user).or(Chatroom.where(sender: current_user))
                 .includes(:sender, :receiver)
-                .map { |chatroom| [chatroom.id, chatroom.sender.username, chatroom.receiver.username, chatroom.messages.last ? chatroom.messages.last : 0] }
+                .map { |chatroom| [chatroom.id, chatroom.sender.username, chatroom.receiver.username, chatroom.messages.last] }
     chatrooms.map { |chat| chat.delete(current_user.username) }
     chatrooms.map! do |chat|
       friend = User.find_by_username(chat[1])
