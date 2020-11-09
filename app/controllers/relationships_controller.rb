@@ -33,19 +33,16 @@ class RelationshipsController < ApplicationController
     Notification.create(recipient: @friend_request.opposed_user(current_user), actor: current_user, action: "accepted", notifiable: @friend_request)
     chatroom = Chatroom.create(sender: current_user, receiver: friendship.friend_a)
     Message.create(content: "Hi, let's be friends!", user: current_user, chatroom: chatroom)
-    authorize @friend_request
     redirect_to relationships_path
   end
 
   def cancel
     @friend_request.destroy
-    authorize @friend_request
     redirect_to relationships_path
   end
 
   def decline
     @friend_request.destroy
-    authorize @friend_request
     redirect_to relationships_path
   end
 
@@ -53,5 +50,6 @@ class RelationshipsController < ApplicationController
 
   def find_friend_request
     @friend_request = FriendRequest.find(params[:id])
+    authorize @friend_request
   end
 end
