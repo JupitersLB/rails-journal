@@ -56,7 +56,7 @@ export default class ChatBox extends Component {
           </div>
         </div>
         <div className="chatbox-messages">
-          { messages.map(message => message.map(m => <Message content={m.content} user={chatUser} author={m.username} time={m.created_at}  key={m.id} />)) }
+          { messages.map(message => <Message content={message.content} user={chatUser} author={message.username} time={message.created_at}  key={message.id} />) }
         </div>
         <div className="chatbox-user-input">
           <MessageForm chatId={chatId}/>

@@ -23,11 +23,13 @@ class App extends Component {
   }
 
   changeSelectedChat = (newSelectedChat) => {
+    this.setState({messages: []})
     this.setState({ selectedChat: newSelectedChat });
     fetchMessages(newSelectedChat.id).promise.then(r => r.map(message => this.setState({
-      messages: [message]
+      messages: [...this.state.messages, message]
     })))
   }
+
 
   render() {
     const {chats, selectedChat, messages} = this.state
