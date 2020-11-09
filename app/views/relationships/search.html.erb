@@ -5,9 +5,11 @@
         <h1>Do you know them?</h1>
       </div>
       <div class="col-4 align-middle text-right">
-        <%= form_tag(search_path, method: "get") do %>
-          <%= text_field_tag :search, params[:search], placeholder: "Find friends" %>
-          <%= submit_tag "Search" %>
+        <%= form_tag(search_path, method: "get", class: "form-inline") do %>
+          <div class="form-group">
+            <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Find friends" %>
+            <%= submit_tag "Search", class: "ml-3 btn btn-outline-secondary" %>
+          </div>
         <% end %>
       </div>
     </div>
