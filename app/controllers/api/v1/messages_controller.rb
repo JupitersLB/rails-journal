@@ -18,11 +18,11 @@ class Api::V1::MessagesController < ApplicationController
   # end
 
   def create
-    message = @chatroom.messages.build(content: params[:content])
-    message.user = current_user
-    message.save
-    authorize message
-    render json: message # see Message.as_json method
+    @message = @chatroom.messages.build(content: params[:content])
+    @message.user = current_user
+    @message.save
+    authorize @message
+    render :show # see Message.as_json method
   end
 
   private

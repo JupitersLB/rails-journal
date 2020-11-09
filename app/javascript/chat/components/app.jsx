@@ -30,6 +30,14 @@ class App extends Component {
     })))
   }
 
+  // componentDidUpdate(prevProps, prevState) {
+  //   this.state.messages.length !== prevState.messages.length
+  // }
+
+  updateMessages = message => {
+    this.setState({messages: [...this.state.messages, message]})
+  }
+
 
   render() {
     const {chats, selectedChat, messages} = this.state
@@ -38,7 +46,7 @@ class App extends Component {
         <div className="chatroom-container">
           <div className="row">
             <ChatList chats={chats} chat={selectedChat} changeSelectedChat={this.changeSelectedChat} />
-            <ChatBox messages={messages} chat={selectedChat} chatUser = {selectedChat.user} chatPhoto={selectedChat.photo} chatFriend={selectedChat.friend} chatId={selectedChat.id}/>
+            <ChatBox messages={messages} updateMessages={this.updateMessages} chat={selectedChat} chatUser = {selectedChat.user} chatPhoto={selectedChat.photo} chatFriend={selectedChat.friend} chatId={selectedChat.id}/>
           </div>
         </div>
       </div>

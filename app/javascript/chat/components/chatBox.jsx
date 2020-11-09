@@ -13,7 +13,7 @@ export default class ChatBox extends Component {
     // this.subscribeActionCable(chat);
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     const objDiv = document.querySelector(".chatbox-messages");
     objDiv.scrollTop = objDiv.scrollHeight;
   }
@@ -39,9 +39,10 @@ export default class ChatBox extends Component {
   // }
 
   render() {
-    const {messages, chat, chatUser, chatPhoto, chatFriend, chatId} = this.props;
+    const {messages, chat, chatUser, chatPhoto, chatFriend, chatId, updateMessages} = this.props;
     const url = `user/${chatFriend}`;
     const content = chat.last_seen ? `Last seen ${chat.last_seen} ago` : ''
+    console.log(messages);
     return (
       <div className="col-8 chatbox">
         <div className="chatbox-details">
@@ -59,7 +60,7 @@ export default class ChatBox extends Component {
           { messages.map(message => <Message content={message.content} user={chatUser} author={message.username} time={message.created_at}  key={message.id} />) }
         </div>
         <div className="chatbox-user-input">
-          <MessageForm chatId={chatId}/>
+          <MessageForm chatId={chatId} updateMessages={updateMessages}/>
         </div>
       </div>
     );

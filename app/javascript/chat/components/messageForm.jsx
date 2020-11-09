@@ -20,8 +20,8 @@ export default class MessageForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const { chatId } = this.props
-    createMessage(chatId, this.state.value);
+    const { chatId, updateMessages } = this.props
+    createMessage(chatId, this.state.value).promise.then(r => updateMessages(r));
     this.setState({ value: '' });
   }
 
