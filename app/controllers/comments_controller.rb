@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
       unless @comment.post.user == current_user
         Notification.create(recipient: @comment.post.user, actor: current_user, action: "commented", notifiable: @comment.post)
       end
+      @comment.post.comments.each { |comment| Notification.create(recipient: comment.user, actor: current_user, action: "commented", notifiable: @comment.post) if comment.user != current_user}
       redirect_to post_path(Post.find(params[:post_id]))
     else
       render template: "posts/show"
