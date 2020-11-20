@@ -10,7 +10,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def show?
-    record.friends.map { |friend| friend.username == user.username }.include?(true) || record == user
+    record.friends.map { |friend| friend.username == user.username }.include?(true) || record == user || user.admin == true
   end
 
   def update?
