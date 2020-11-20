@@ -1,0 +1,4 @@
+<%= simple_form_for [comment, Comment.new], html: { class: 'px-5 mx-3 pb-5' } do |f| %>
+<%= f.input :note %>
+<%= f.submit 'Reply', class: 'btn btn-outline-secondary' %>
+<% end %>
