@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
-  before_action :find_post, only: [:show, :destroy]
+  before_action :find_post, only: %i[show destroy]
 
   def index
-    @my_posts = policy_scope(Post).where(user: current_user).order(created_at: :desc)
+    @my_posts = policy_scope(Post).where(user: current_user).order(created_at: :desc).includes(:comments)
     ids = current_user.friends.pluck(:id) << current_user.id
     @all_posts = policy_scope(Post).where(user_id: ids).order(created_at: :desc)
   end

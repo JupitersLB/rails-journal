@@ -7,9 +7,9 @@ class CommentsController < ApplicationController
     authorize @comment
     if @comment.save
       unless @comment.commentable.user == current_user
-        Notification.create(recipient: @comment.post.user, actor: current_user, action: "commented", notifiable: @comment.post)
+        Notification.create(recipient: @comment.commentable.user, actor: current_user, action: "commented", notifiable: Comment.find_post(@comment))
       end
-      @comment.commentable.comments.each { |comment| Notification.create(recipient: comment.user, actor: current_user, action: "commented", notifiable: @comment.post) if comment.user != current_user}
+      @comment.commentable.comments.each { |comment| Notification.create(recipient: comment.user, actor: current_user, action: "commented", notifiable: Comment.find_post(@comment)) if comment.user != current_user}
       redirect_to post_path(Comment.find_post(@comment))
     else
       render template: "posts/show"

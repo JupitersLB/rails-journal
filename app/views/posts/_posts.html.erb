@@ -39,7 +39,7 @@
           <div class="row mt-3">
             <div class="pl-3">
               <%= link_to post_path(post) do %>
-                <p><i class="fa fa-comment" aria-hidden="true"></i> <small><%= post.comments.count %> comments</small> </p>
+                <p><i class="fa fa-comment" aria-hidden="true"></i> <small><%= post.deep_count %> comments</small> </p>
               <% end %>
             </div>
 

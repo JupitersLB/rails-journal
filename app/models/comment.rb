@@ -12,4 +12,10 @@ class Comment < ApplicationRecord
       find_post(c)
     end
   end
+
+  def deep_count
+    count = comments.count
+    comments.each { |c| count += c.deep_count }
+    count
+  end
 end
