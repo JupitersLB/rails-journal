@@ -1,0 +1,5 @@
+<p>Hi <%= @user.username %></p>,
+<p>A new user has joined 'Yours'.</p>
+<p>Make sure to check them out <%= link_to @new_user.username, "https://journal-yours.herokuapp.com/user/#{@new_user.username}" %>.</p>
+<p>Stay safe.</p>
+<p>Cheers</p>
