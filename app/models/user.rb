@@ -41,4 +41,8 @@ class User < ApplicationRecord
   def friends
     friend_as + friend_bs
   end
+
+  def custom_label_method
+    username
+  end
 end

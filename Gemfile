@@ -23,6 +23,8 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 gem "js-routes"
 
+gem "actionview", ">= 6.0.3.3"
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -37,6 +39,8 @@ gem 'faker'
 gem 'cloudinary', '~> 1.12.0'
 gem 'pg_search', '~> 2.3.0'
 gem 'pundit'
+
+gem 'rails_admin', '~> 2.0'
 
 group :development, :test do
   gem 'pry-byebug'
