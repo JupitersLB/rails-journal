@@ -9,6 +9,8 @@ class Notification {
     }
   }
 
+  // Check for new notifications
+
   newNotifications() {
     fetch(`${window.location.origin}/notifications.json`)
       .then(response => response.json())
@@ -18,6 +20,7 @@ class Notification {
         });
         this.unread_count = 0
         data.forEach((notification) => {
+          // Add class and add to count if any notifications haven't been read
           if (notification.unread) {
             document.querySelector("[data-behavior='notification-bell']").classList.add('notify');
             this.unread_count += 1;
@@ -25,15 +28,18 @@ class Notification {
 
         })
 
+        //  add the number of unread notifications if greater than 0
         if (this.unread_count > 0) {
           document.querySelector("[data-behavior='unread-count']").innerHTML = this.unread_count;
           document.querySelector("[data-behavior='unread-count']").classList.add('notification-count');
         }
 
-
+        // put the items from the response into the dropdown of notifications
         document.querySelector("[data-behavior='notification-items']").innerHTML = items
       });
   }
+
+  // When notification icon is clicked, mark all notifications as read, remove classes.
 
   handleClick() {
     fetch(`${window.location.origin}/notifications/mark_as_read`, {
