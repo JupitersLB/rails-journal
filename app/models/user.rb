@@ -38,10 +38,12 @@ class User < ApplicationRecord
                     tsearch: { prefix: true } # <-- now `superman batm` will return something!
                   }
 
+  # get all the friends
   def friends
     friend_as + friend_bs
   end
 
+  # custom label for rails-admin gem page
   def custom_label_method
     username
   end

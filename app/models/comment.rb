@@ -4,6 +4,7 @@ class Comment < ApplicationRecord
   has_many :comments, as: :commentable
   validates :note, presence: true, uniqueness: true
 
+  # Help find post from child comments
   def self.find_post(ele)
     if ele.commentable_type == 'Post'
       Post.find(ele.commentable_id)
@@ -13,6 +14,7 @@ class Comment < ApplicationRecord
     end
   end
 
+  # Method to count all child comments for a post
   def deep_count
     count = comments.count
     comments.each { |c| count += c.deep_count }
