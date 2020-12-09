@@ -51,7 +51,9 @@
             </div>
             <div class="emoji-likes d-flex align-middle mr-3">
               <div class="emoji-choices mr-3">
-                <p>&#128514</p>
+                <%= link_to post_likes_path(post, value: '&#128514'), method: :post do %>
+                  <p>&#128514</p>
+                <% end %>
                 <p>&#x1F60D</p>
                 <p>&#x1F631</p>
                 <p>&#x1F973</p>
