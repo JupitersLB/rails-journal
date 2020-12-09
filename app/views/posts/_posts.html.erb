@@ -7,8 +7,8 @@
             <h3><%= post.title %></h3>
             <div class="emoji-tallies d-flex">
               <% if post.likes.count > 0 %>
-                <% post.likes.each do |like| %>
-                  <p><%= like.value.html_safe %></p>
+                <% post.likes.map(&:value).uniq.each do |v| %>
+                  <p><%= v.html_safe %></p>
                 <% end %>
                 <p class="pl-3"><%= post.likes.count %></p>
               <% end %>
