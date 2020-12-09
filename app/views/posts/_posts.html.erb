@@ -36,11 +36,22 @@
             <% end %>
           </div>
 
-          <div class="row mt-3">
+          <div class="row mt-3 justify-content-between">
             <div class="pl-3">
               <%= link_to post_path(post) do %>
                 <p><i class="fa fa-comment" aria-hidden="true"></i> <small><%= post.deep_count %> comments</small> </p>
               <% end %>
+            </div>
+            <div class="emoji-likes d-flex align-middle mr-3">
+              <div class="emoji-choices mr-3">
+                <p>😂</p>
+                <p>😍</p>
+                <p>😱</p>
+                <p>🥳</p>
+              </div>
+              <div class="emoji-selector d-flex justify-content-center">
+                <p>🙂</p>
+              </div>
             </div>
 
           </div>
