@@ -5,5 +5,5 @@ class Like < ApplicationRecord
   belongs_to :likeable, polymorphic: true
 
   validates :value, inclusion: { in: EMOJI_CODES }
-  validates :user_id, uniqueness: { scope: :value }
+  validates :user, uniqueness: { scope: [:value, :post] }
 end

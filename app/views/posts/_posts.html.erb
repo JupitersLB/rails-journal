@@ -6,11 +6,12 @@
           <div class="btn text-left col-10" type="button" data-toggle="collapse" data-target="#collapse<%= post.id %>" aria-expanded="true" aria-controls="collapse<%= post.id %>">
             <h3><%= post.title %></h3>
             <div class="emoji-tallies d-flex">
-              <p>&#128514</p>
-              <p>&#x1F60D</p>
-              <p>&#x1F631</p>
-              <p>&#x1F973</p>
-              <p>354</p>
+              <% if post.likes.count > 0 %>
+                <% post.likes.each do |like| %>
+                  <p><%= like.value.html_safe %></p>
+                <% end %>
+                <p class="pl-3"><%= post.likes.count %></p>
+              <% end %>
             </div>
           </div>
           <div class="col-2">
@@ -54,9 +55,15 @@
                 <%= link_to post_likes_path(post, value: '&#128514'), method: :post do %>
                   <p>&#128514</p>
                 <% end %>
-                <p>&#x1F60D</p>
-                <p>&#x1F631</p>
-                <p>&#x1F973</p>
+                <%= link_to post_likes_path(post, value: '&#x1F60D'), method: :post do %>
+                  <p>&#x1F60D</p>
+                <% end %>
+                <%= link_to post_likes_path(post, value: '&#x1F631'), method: :post do %>
+                  <p>&#x1F631</p>
+                <% end %>
+                <%= link_to post_likes_path(post, value: '&#x1F973'), method: :post do %>
+                  <p>&#x1F973</p>
+                <% end %>
               </div>
               <div class="emoji-selector d-flex justify-content-center">
                 <p>&#x1F642</p>

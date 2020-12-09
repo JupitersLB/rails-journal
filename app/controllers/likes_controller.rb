@@ -5,7 +5,6 @@ class LikesController < ApplicationController
     @like.likeable = @like.post
     authorize @like
     @like.save
-    raise
   end
 
   private
