@@ -35,10 +35,13 @@
       .emoji-selector {
         cursor: pointer;
         width: inherit;
+        p {
+          font-size: 24px;
+        }
       }
       p {
         margin-bottom: 0px;
-        font-size: 24px;
+        font-size: 16px;
         padding: 0 2px;
       }
       &:hover {
@@ -46,8 +49,11 @@
         border-radius: 50px;
         width: fit-content;
         .emoji-choices {
-
           display: flex;
+          align-items: center;
+          p:hover {
+            font-size: 24px;
+          }
         }
       }
     }
