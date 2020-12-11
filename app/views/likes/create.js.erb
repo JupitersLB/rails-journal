@@ -1,0 +1,28 @@
+var post = document.querySelector('[data-post-id="<%= @like.post_id %>"]');
+var emojiTallies = post.querySelector('.emoji-tallies');
+var likes = emojiTallies.querySelectorAll('p');
+var tallyCount = emojiTallies.querySelector('#tally-count');
+
+var values = [];
+likes.forEach(ele => values.push(ele.innerHTML));
+
+var like = document.createElement("p");
+like.innerHTML = '<%= @like.value.html_safe %>';
+
+if (!values.includes(like.innerHTML)) {
+  emojiTallies.prepend(like);
+}
+
+console.log('<%= @like.id %>');
+
+if ('<%= @like.id %>') {
+  if (tallyCount) {
+    tallyCount.innerHTML = parseInt(tallyCount.innerHTML, 10) + 1;
+  } else {
+    var tc = document.createElement("p");
+    tc.classList.add('pl-3');
+    tc.setAttribute('id', 'tally-count');
+    tc.innerHTML = 1;
+    emojiTallies.appendChild(tc);
+  }
+}

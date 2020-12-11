@@ -5,6 +5,9 @@ class LikesController < ApplicationController
     @like.likeable = @like.post
     authorize @like
     @like.save
+    respond_to do |format|
+      format.js { @like }
+    end
   end
 
   private
