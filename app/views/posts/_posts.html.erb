@@ -1,16 +1,17 @@
 <div class="accordion mb-3" id="accordionPosts">
   <% posts.each do |post| %>
-    <div class="card">
+    <div class="card" data-post-id="<%= post.id %>">
       <div class="card-header " id="heading<%= post.id %>">
         <div class="row">
           <div class="btn text-left col-10" type="button" data-toggle="collapse" data-target="#collapse<%= post.id %>" aria-expanded="true" aria-controls="collapse<%= post.id %>">
             <h3><%= post.title %></h3>
             <div class="emoji-tallies d-flex">
-              <p>&#128514</p>
-              <p>&#x1F60D</p>
-              <p>&#x1F631</p>
-              <p>&#x1F973</p>
-              <p>354</p>
+              <% if post.likes.count > 0 %>
+                <% post.likes.map(&:value).uniq.each do |v| %>
+                  <p><%= v.html_safe %></p>
+                <% end %>
+                <p class="pl-3" id="tally-count"><%= post.likes.count %></p>
+              <% end %>
             </div>
           </div>
           <div class="col-2">
@@ -51,10 +52,18 @@
             </div>
             <div class="emoji-likes d-flex align-middle mr-3">
               <div class="emoji-choices mr-3">
-                <p>&#128514</p>
-                <p>&#x1F60D</p>
-                <p>&#x1F631</p>
-                <p>&#x1F973</p>
+                <%= link_to post_likes_path(post, value: '&#128514'), method: :post, remote: true do %>
+                  <p>&#128514</p>
+                <% end %>
+                <%= link_to post_likes_path(post, value: '&#x1F60D'), method: :post, remote: true do %>
+                  <p>&#x1F60D</p>
+                <% end %>
+                <%= link_to post_likes_path(post, value: '&#x1F631'), method: :post, remote: true do %>
+                  <p>&#x1F631</p>
+                <% end %>
+                <%= link_to post_likes_path(post, value: '&#x1F973'), method: :post, remote: true do %>
+                  <p>&#x1F973</p>
+                <% end %>
               </div>
               <div class="emoji-selector d-flex justify-content-center">
                 <p>&#x1F642</p>
